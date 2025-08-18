@@ -1,0 +1,183 @@
+body, html {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth; 
+    }
+
+nav {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem;
+      background: transparent;
+      display: flex;
+      justify-content: left;
+      gap: 4rem;
+      z-index: 1000;
+    }
+
+.logo{
+  height: 100px;
+  margin-right: 15vw;
+  margin-left: 5vw;
+}
+.nav-left{
+  padding-top: 4vh;
+}    
+.nav-center {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 3vh;
+  gap: 3rem; 
+  width: 40vw;            
+}
+
+.nav-center a {
+      margin-top: 2rem;
+      white-space: nowr;
+      text-decoration: none;
+      color: rgb(255, 255, 255);
+      font-size: 1.2rem;
+      font-family: "lexand",sans-serif;
+      font-weight: 700;
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+
+.nav-center a:hover {
+      color: darkblue;
+    }
+
+   
+section {
+  height: 100vh; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+
+#home {
+  background: #000000;
+  background-image: url(stars.png);
+  background-repeat: no-repeat;   
+  background-position: center;   
+  background-size: cover;
+  padding-top: 0vh;
+
+}
+
+.name{
+  font-family: 'Asul', sans-serif;
+  font-size: 5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 15vh;
+}
+
+.name span{
+  color: #004AAB;
+  
+}
+#moto{
+  color:#E0E0E0;
+  font-size: 2.2rem;
+  line-height: .9;
+  font-weight: 400;
+  font-family: 'Red Rose', sans-serif;
+  margin-top: 0;
+
+}
+
+#about{
+  background: #000000f4;
+  background-image: url(stars.png); 
+  background-repeat: no-repeat;   
+  background-position: center;   
+  background-size: cover;
+  height: 100vh;
+  padding-top: 20vh;
+
+}
+.about-layer{
+  background: rgba(20, 20, 20, 0.9);
+  padding: 2vw 5vw;
+  width: 75vw;
+  height: 55vh;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 140, 255, 0.8);
+  position: relative;
+}
+
+.explore-button{
+  background: rgba(100, 100, 100, 0.5);
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  height: 7vh;
+  width: 12vw;
+  border-radius: 25px;
+  border: none;
+  
+  
+}
+
+.about-layer h1,#events h1{
+  font-family: "Lexend",sans-serif;
+  color: #0C8CE9;
+  font-size: 2.5rem;
+}
+.about-layer p{
+  display: flex;
+  flex-wrap:wrap ;
+  font-family: "Lexend",sans-serif;
+  font-size: 1.6rem;
+  color: white;
+}
+
+
+
+
+
+#events { 
+  background: #000000f4;
+  background-image: url(stars.png);  
+}
+
+.cards{
+  display: flex;
+  gap: 5vw;
+  padding: 5vw 5vw;
+}
+
+.event-card{
+  width: 20vw;
+  display: flex;
+  
+}
+
+#card1{
+  background-color: yellow;
+}
+#card2{
+  background-color: rgb(0, 102, 255);
+}
+#card3{
+  background-color: rgb(255, 0, 217);
+}
+
+
+#achivements {
+  background: #000000f4;
+  background-image: url(stars.png);  
+}
+
+#gallery {
+  background: #000000f4;
+  background-image: url(stars.png);  
+}
