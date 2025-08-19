@@ -143,39 +143,73 @@ section {
 #events { 
   background: #000000f4;
   background-image: url(stars.png);
-  padding-top: 10vh; 
+  padding-top: 10vh;
+  display: flex; 
 }
 
-.cards-box{
+.cards-viewport{
+  width: 72vw;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+.cards-track{
+  padding: 5rem;
   display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 50px;
+  gap: 10vh;                 
+  transition: transform .5s ease;
+  will-change: transform;
 }
 
 .event-card{
-  width: 20vw;
-  height: 50vh;
+  flex: 0 0 20vw;            
+  height: 60vh;
   border-radius: 30px;
   background-color: rgba(0, 38, 255, 0.2);
-  border: solid 2px #0ff;
+  border: 2px solid #0ff;
   box-shadow:
     0 0 2px #000DFF,
     0 0 5px #000DFF,
     0 0 10px #000DFF,
     0 0 20px #000DFF;
-  
-  
+  transition: transform .3s ease;
 }
 
-#card1{
-  
+.event-card.active{
+  transform: scale(1.12);
+  z-index: 1;
 }
-#card2{
-  
+
+.slider-container {
+  position: relative;
+  width: 80vw;
+  margin: 0 auto;
 }
-#card3{
-  
+
+
+.control-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.prev-btn {
+  left: -60px;   /* push left outside track */
+}
+
+.next-btn {
+  right: -60px;  /* push right outside track */
 }
 
 
