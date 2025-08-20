@@ -142,7 +142,7 @@ section {
 #events { 
   background: #000000f4;
   background-image: url(stars.png);
-  padding-top: 10vh;
+  padding-top: 2vh;
   display: flex; 
 }
 
