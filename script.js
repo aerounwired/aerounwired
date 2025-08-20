@@ -2,15 +2,13 @@ const viewport = document.getElementById('cards-viewport');
 const track = document.getElementById('cards-track');
 const cards = track.querySelectorAll('.event-card');
 
-let activeIndex = 1; // start on card 3
+let activeIndex = 1;
 
 function centerActive() {
-  // set active class
   cards.forEach(c => c.classList.remove('active'));
   const active = cards[activeIndex];
   active.classList.add('active');
 
-  // after class applies, measure and center
   requestAnimationFrame(() => {
     const activeCenter = active.offsetLeft + active.offsetWidth / 2;
     const target = activeCenter - viewport.clientWidth / 2;

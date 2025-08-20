@@ -214,7 +214,7 @@ section {
 .eventimage{
   position: relative;
   top: 10%;
-  width: 90%;
+  width: 75%;
   margin: auto;
   border-radius: 20px;
   overflow: hidden;
@@ -225,7 +225,7 @@ section {
 }
 .workshopName
 {
-  font-size: 40px;
+  font-size: 30px;
   position: relative;
   top: 15%;
   width: 80%;
