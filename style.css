@@ -236,11 +236,6 @@ section {
   
 }
 
-#achivements {
-  background: #000000f4;
-  background-image: url(stars.png);  
-}
-
 #gallery {
   background: #000000f4;
   background-image: url(stars.png);  
@@ -254,6 +249,28 @@ section {
   margin: 20px;
 }
 
+footer{
+  background-image: url(stars.png);
+}
+
+.foot{
+  flex: 0 0 20vw;            
+  height: 30vh;
+  width: 90vw;
+  margin: 5vw;
+  border-radius: 60px;
+  border: 2px solid #0ff;
+  box-shadow:
+    0 0 2px #000DFF,
+    0 0 5px #000DFF,
+    0 0 10px #000DFF,
+    0 0 20px #000DFF;
+  transition: transform .3s ease;
+}
+
+.footer-logo{
+    margin: 3vw 3vw;
+}
 
 
 
