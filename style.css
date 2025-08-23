@@ -46,7 +46,7 @@ nav {
     }
 
 .nav-center a:hover {
-      color: darkblue;
+      text-decoration: underline;
     }
 
    
