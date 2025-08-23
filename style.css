@@ -56,7 +56,7 @@ section {
   flex-direction: column; 
   align-items: center;
   color: white;
-  text-align: center;
+  
 }
 
 
@@ -242,19 +242,22 @@ section {
 }
 
 .gallery{
-  padding: 0 10%;
+  padding: 0 15%;
+  justify-content: center;
 }
 .picture{
   display: inline-block;
-  margin: 20px;
+  margin: 12px;
 }
 
-footer{
+.footer{
   background-image: url(stars.png);
+  height: 400px;
+  justify-content: flex-end ;
 }
 
-.foot{
-  flex: 0 0 20vw;            
+.foot{    
+  display: flex;
   height: 30vh;
   width: 90vw;
   margin: 5vw;
@@ -265,11 +268,18 @@ footer{
     0 0 5px #000DFF,
     0 0 10px #000DFF,
     0 0 20px #000DFF;
-  transition: transform .3s ease;
+ }
+
+.foot h2{
+  margin-left: 10vh;
 }
 
 .footer-logo{
-    margin: 3vw 3vw;
+
+  height: 100px;
+  margin-left: 2vw;  
+  margin-right: 0;    
+  padding-top: 7vh;
 }
 
 
