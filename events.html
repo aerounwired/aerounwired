@@ -12,11 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="gallery_styles.css" />
+    <link rel="stylesheet" href="events_styles.css" />
   </head>
   <body>
+    <div class="background-stars"></div>
     
-    <!-- ================= NAVBAR ================= -->
     <header class="navbar">
       <!-- Left: Logo -->
       <div class="nav-left">
@@ -40,39 +40,27 @@
       </nav>
     </header>
 
-    <!-- ================= GALLERY ================= -->
-    <main class="grid-section">
-      <h1 class="grid-title">GALLERY</h1>
-
-      <!-- Gallery Grid -->
-      <div class="grid-container">
-        <!-- Empty grid items → replace with real images later -->
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
+    <!-- ================= MAIN PAGE ================= -->
+    <main class="events-section">\
+      <!-- EVENTS STATIC IMAGE -->
+      <div class="event-container">
+        <div class="event-item">
+            <img src="" alt="icarus">
+        </div>
       </div>
     </main>
+
+    <section id="events">
+    <div class="slider-container">
+      <button class="control-btn prev-btn" onclick="prev()">◀</button>
+        <div class="cards-viewport" id="cards-viewport">
+          <div class="cards-track" id="cards-track">
+          </div>
+        </div>
+      <button class="control-btn next-btn" onclick="next()">▶</button>
+    </div>
+  
+  </section>
 
     <!-- ================= FOOTER ================= -->
     <footer class="footer">
@@ -98,7 +86,7 @@
         <!-- Location -->
         <div class="footer-location">
           <h3>LOCATION</h3>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d489.0239309423229!2d75.93626106326154!3d11.32071313963536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba643007daa9c27%3A0x7a5c84935aa8ac09!2sMILMA%20Parlour%20(Mini%20Canteen)!5e0!3m2!1sen!2sin!4v1756063302919!5m2!1sen!2sin" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" disableDefaultUI=true zoom=15 maptype=roadmap></iframe>
+          <iframe class="club-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d489.0239309423229!2d75.93626106326154!3d11.32071313963536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba643007daa9c27%3A0x7a5c84935aa8ac09!2sMILMA%20Parlour%20(Mini%20Canteen)!5e0!3m2!1sen!2sin!4v1756063302919!5m2!1sen!2sin" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" disableDefaultUI=true zoom=15 maptype=roadmap></iframe>
           <p>1<sup>st</sup> Floor , milma canteen , NITC</p>
         </div>
 
@@ -133,8 +121,8 @@
     </footer>
 
     <!-- ================= SCRIPT ================= -->
-    <script src="gallery_scripts.js"></script>
-    
-
+    <script src="events_scripts.js"></script>
+    <script src="event.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

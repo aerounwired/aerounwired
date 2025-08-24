@@ -19,7 +19,7 @@
       <a href="#about">ABOUT US</a>
       <a href="#events">EVENTS</a>
       <a href="#achivements">ACHIVEMENTS</a>
-      <a href="gallery.html">GALLERY</a>
+      <a href="#gallery">GALLERY</a>
     </div>
   </nav>
     <h1 class = "name">CLUB <span>AERO</span>UNWIRED</h1>
@@ -31,7 +31,7 @@
       <h1>ABOUT US</h1>
       <p>We are the Aeromodelling Club of NIT Calicut, a vibrant community of enthusiasts passionate about the science and art of flight. Our club brings together students who design, build, and fly a wide range of aerial vehicles, including planes, drones, and model rockets.
 Our aim is to promote hands-on learning and innovation in aeromodelling and aerospace engineering. Through workshops, projects, and competitions, we encourage creativity, technical skill development, and teamwork. </p>
-        <button class = "explore-button">EXPLORE</button>
+        <button class = "view-more">EXPLORE</button>
     </div>
   </section>
   <section id="events">
@@ -44,6 +44,10 @@ Our aim is to promote hands-on learning and innovation in aeromodelling and aero
         </div>
       <button class="control-btn next-btn" onclick="next()">▶</button>
     </div>
+
+    <button class="view-more">
+      <a href="events.html" style="text-decoration: none; color: white;">VIEW MORE</a>
+    </button>
   
   </section>
   <section id="gallery">
@@ -90,14 +94,68 @@ Our aim is to promote hands-on learning and innovation in aeromodelling and aero
         </a>
       </div>
     </div>
+    <button class="view-more">
+      <a href="gallery.html" style="text-decoration: none; color: white;">VIEW MORE</a>
+    </button>
   </section>
-  <section>
-    <div class="foot">
-      <img class="footer-logo" src="logo.png" alt="logo">
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+      <div class="footer-content">
+        
+        <!-- Club Logo -->
+        <div class="footer-logo">
+          <img src="logo.png" alt="Aerounwired Logo" />
+        </div>
 
-    </div>
+        <!-- Quick Links -->
+        <div class="footer-links">
+          <h3>QUICK LINKS</h3>
+          <ul>
+            <li><a href="hero.html#home">HOME</a></li>
+            <li><a href="hero.html#about">ABOUT US</a></li>
+            <li><a href="hero.html#events">EVENTS</a></li>
+            <li><a href="hero.html#achivements">ACHIEVEMENTS</a></li>
+            <li><a href="gallery.html">GALLERY</a></li>
+          </ul>
+        </div>
 
-  </section>
+        <!-- Location -->
+        <div class="footer-location">
+          <h3>LOCATION</h3>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d489.0239309423229!2d75.93626106326154!3d11.32071313963536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba643007daa9c27%3A0x7a5c84935aa8ac09!2sMILMA%20Parlour%20(Mini%20Canteen)!5e0!3m2!1sen!2sin!4v1756063302919!5m2!1sen!2sin" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" disableDefaultUI=true zoom=15 maptype=roadmap></iframe>
+          <a href=""></a>
+          <p>1<sup>st</sup> Floor , milma canteen , NITC</p>
+        </div>
+
+        <!-- Socials -->
+        <div class="footer-social">
+          <h3>CONNECT WITH US</h3>
+          <ul>
+            <li>
+              <a href="https://www.instagram.com/club_aerounwired?igsh=MXYxcXVjNmVpend2cA==" target="_blank">
+                <img src="instagram_logo.png" alt="Instagram" /> Instagram
+              </a>
+            </li>
+            <li>
+              <a href="mailto:aerounwired@nitc.ac.in">
+                <img src="gmail_logo.png" alt="Gmail" /> Gmail
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/company/aerounwired/" target="_blank">
+                <img src="linkedin_logo.png" alt="LinkedIn" /> LinkedIn
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Note -->
+      <p class="footer-bottom">
+        Aerounwired club ©2025, NITC. All rights reserved.
+      </p>
+    </footer>
 </body>
 <script src="event.js"></script>
 <script src="script.js"></script>
