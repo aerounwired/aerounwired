@@ -89,11 +89,18 @@ body, html {
 .footer {
   background: rgba(0, 0, 0, 0.8);
   background-image: url(stars.png);
-  padding: 3vw 5vw;
+  padding: 0vw 5vw !important;
+  padding-top: 1.5vw !important;
   border: 0.1vw solid #00aaff;
   border-radius: 5vw;
   margin: 2vw 5vw;
-  box-shadow: 0 0 0.5vw #b8c6aa, 0 0 1.5vw #00aaff, 0 0 1.5vw #67c3d0;
+  border-radius: 60px;
+  border: 2px solid #0ff;
+  box-shadow:
+    0 0 2px #000DFF,
+    0 0 5px #000DFF,
+    0 0 10px #000DFF,
+    0 0 20px #000DFF;
 }
 
 .footer-content {
@@ -105,9 +112,11 @@ body, html {
 }
 
 .footer-logo img {
-  height: 10vw;
+  height: 8vw !important;
   margin-bottom: 1vw;
   margin-top: 1.8vw;
+  position: relative;
+  top: -3vw;
 }
 
 .footer h3 {
@@ -138,7 +147,7 @@ body, html {
 
 .footer-bottom {
   text-align: center;
-  margin-top: 2vw;
+  margin-top: 0vw;
   font-size: 0.9vw;
   color: #bbb;
 }
@@ -175,8 +184,8 @@ body, html {
 }
 
 .footer-location img {
-  width: 12vw;
-  height: auto;
+  width: 1vw !important;
+
   border-radius: 0.5vw;
 }
 
