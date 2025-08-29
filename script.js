@@ -2,7 +2,7 @@ const viewport = document.getElementById('cards-viewport');
 const track = document.getElementById('cards-track');
 const cards = track.querySelectorAll('.event-card');
 
-let activeIndex = 1; // start on card 2
+let activeIndex = 1; // start on card 3
 
 function centerActive() {
   // set active class
