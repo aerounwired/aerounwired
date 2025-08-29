@@ -323,13 +323,13 @@ section {
 }
 
 .next-btn {
-  right: -60px;  
+  right: -60px;  /* push right outside track */
 }
 
 .eventimage{
   position: relative;
   top: 10%;
-  width: 75%;
+  width: 90%;
   margin: auto;
   border-radius: 20px;
   overflow: hidden;
@@ -340,7 +340,7 @@ section {
 }
 .workshopName
 {
-  font-size: 30px;
+  font-size: 40px;
   position: relative;
   top: 15%;
   width: 80%;
@@ -349,6 +349,11 @@ section {
   font-family: "Lexend",sans-serif;
 
   
+}
+
+#achivements {
+  background: #000000f4;
+  background-image: url(stars.png);  
 }
 
 #gallery {
