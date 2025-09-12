@@ -279,7 +279,8 @@ section {
 
 .event-card{
   flex: 0 0 20vw;            
-  height: 28vw;
+  height:60;i
+  width: 10vw;
   border-radius: 30px;
   background-color: rgba(0, 38, 255, 0.2);
   border: 2px solid #0ff;
