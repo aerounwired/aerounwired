@@ -28,5 +28,11 @@ eventData.forEach((cardData,i)=>
  
 })
 
+const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-center');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
 
 document.getElementById("cards-track").innerHTML = html;

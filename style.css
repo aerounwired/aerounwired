@@ -13,13 +13,13 @@ nav {
       padding-top: 1rem;
       background: transparent;
       display: flex;
-      justify-content: left;
+      justify-content: flex-start;
       gap: 4rem;
       z-index: 1000;
     }
 
 .logo{
-  height: 100px;
+  height: auto;
   margin-right: 15vw;
   margin-left: 5vw;
   padding-top: 4vh;
@@ -35,7 +35,6 @@ nav {
 
 .nav-center a {
       margin-top: 2rem;
-      white-space: nowr;
       text-decoration: none;
       color: rgb(255, 255, 255);
       font-size: 1.2rem;
@@ -49,6 +48,15 @@ nav {
       text-decoration: underline; /*underline or darkblue?*/
     }
 
+.hamburger {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: clamp(1rem, 4vw, 2rem);
+  cursor: pointer;
+  z-index: 1001;
+}
    
 section {
   height: 100vh; 
@@ -142,16 +150,23 @@ section {
 }
 
 .view-more{
-  display: inline-block;
-  margin-top: 3vh;
+  display: block;
+  margin: 1rem auto;
+  padding: 0.75rem 1.5rem;
   background: rgba(100, 100, 100, 0.5);
   color: white;
-  font-size: large;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   font-weight: bold;
   height: 7vh;
-  border-radius: 25px;
+  border-radius: 5px;
   border: none;
-  
+  cursor: pointer;
+  width: fit-content;
+  text-align: center;
+}
+.view-more a {
+  color: white;
+  text-decoration: none;
 }
 
 /* ================= FOOTER (1st footer code) ================= */
@@ -246,9 +261,9 @@ section {
 }
 
 .footer-location img {
-  width: 12vw;
-  height: auto;
-  border-radius: 0.5vw;
+  height: 10vw;
+  margin-bottom: 1vw;
+  margin-top: 1.8vw;
 }
 .view-more:hover{
   background: #0C8CE9;
@@ -257,35 +272,46 @@ section {
   transition: transform 0.3s ease;
 } 
 
+.club-map {
+  height: 10vw;
+  width: 10vw;
+}
+
 /*========== 1st FOOTER ENDS ============*/
 
 #events { 
   background: url(stars.png) no-repeat center center/cover; 
   padding-top: 2vh; /*or 10vh?*/
   display: flex; 
+  text-align: center;
   /* position: static; */
 }
 
 .cards-viewport{
   width: 90%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   margin: 0 auto;
   position: relative;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 
 .cards-track{
-  padding: 5rem;
+  padding: 1rem;
   display: flex;
-  gap: 10vh;                 
+  gap: 2rem;                 
   transition: transform .5s ease;
   will-change: transform;
 }
 
 .event-card{
-  flex: 0 0 20vw;            
-  height: 55vh;
-  width: 10vw;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 clamp(100px, 25vw, 350px);
+  align-items: center;
+  justify-content: flex-start;
   border-radius: 30px;
   background-color: rgba(0, 38, 255, 0.2);
   border: 2px solid #0ff;
@@ -295,6 +321,8 @@ section {
     0 0 10px #000DFF,
     0 0 20px #000DFF;
   transition: transform .3s ease;
+  padding: 1rem;
+  text-align: center;
 }
 
 .event-card.active{
@@ -333,28 +361,25 @@ section {
 }
 
 .eventimage{
-  position: relative;
-  top: 10%;
   width: 90%;
   margin: auto;
   border-radius: 20px;
   overflow: hidden;
-  
+  position: static;
+  top: auto;
 }
 .eventimage img{
   width: 100%;
+  display: block;
 }
-.workshopName
-{
+.workshopName {
   font-size: 25px;
-  position: relative;
-  top: 15%;
   width: 80%;
   text-align: center;
-  margin: auto;
+  margin: 1rem auto 0;
   font-family: "Lexend",sans-serif;
-
-  
+  position: static;
+  top: auto;
 }
 
 #achivements {
@@ -363,18 +388,34 @@ section {
 }
 
 #gallery {
-  background: #000000f4;
-  background-image: url(stars.png);  
+  background: #000000f4 url(stars.png) center/cover no-repeat;
+  padding: 2rem 0;
+  display: block !important;
+  height: auto !important;
 }
 
-.gallery{
-  padding: 0 15%;
-  justify-content: center;
+.gallery {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  padding: 0 5%;
+  align-items: start;
 }
-.picture{
-  display: inline-block;
-  margin: 12px;
+
+.picture {
+  display: block;
+  width: 100%;
+  margin: 0;
 }
+
+.picture img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
 
 footer{
   background-image: url(stars.png);
@@ -501,15 +542,21 @@ footer{
 }
 
 .footer-location img {
-  width: 1vw !important;
-
-  border-radius: 0.5vw;
+  height: 8vw !important;
+  margin-bottom: 1vw;
+  margin-top: 1.8vw;
+  position: relative;
+  top: -3vw;
 }
 /* ============ 2nd Footer ends ============*/
 
 /* ========== RESPONSIVE DESIGN =========== */
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .logo {
+    width: clamp(30px, 19vw, 150px);
+  }
+
   .name {
     white-space: normal;
     overflow-wrap: break-word;
@@ -522,6 +569,7 @@ footer{
     max-width: 95%;
     font-size: clamp(8px, 4vw, 2.2rem);
   }
+
   .about-layer p{
     font-size: clamp(8px, 4vw, 1.6rem);
   }
@@ -530,5 +578,51 @@ footer{
   }
   .view-more {
     font-size: clamp(8px, 3vw, 1.125rem);
+  }
+
+  #gallery h1{
+    font-size: clamp(1.5rem, 4vw, 5rem);
+  }
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding: 0 2%;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 950px) {
+  .hamburger {
+    display: block;
+  }
+  .nav-center {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    right: -190px;   /* width of menu panel */
+    width: clamp(75px, 20vw, 150px);
+    height: 100%;
+    background-color: rgba(77, 163, 255, 0.6);
+    backdrop-filter: blur(6px);
+    flex-direction: column;
+    padding-top: 6rem;
+    padding-right: 1.5rem;
+    margin: 0;
+
+    transition: right 0.3s ease;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+    z-index: 1000;
+  }
+  .nav-center a {
+    display: block;
+    text-align: center;
+    padding-right: 0.5rem;
+    margin: 0;
+    font-size: clamp(0.5rem, 2vw, 1.2rem);
+    line-height: 1.2;
+  }
+  .nav-center.active {
+    right: 0;
   }
 }
