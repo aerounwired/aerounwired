@@ -1,5 +1,5 @@
 const eventData = [{
-    name: 'Computational Fluid dynamics',
+    name: 'Computational Fluid Dynamics',
     image: 'fluid_dynamics.png'
 },{name: 'ICARUS',
     image: 'icarus.png'
