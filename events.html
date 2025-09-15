@@ -3,118 +3,156 @@
   <head>
     <meta charset="UTF-8" />
     <title>AEROUNWIRED</title>
-<!--     for responsive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--     for responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Asul:wght@400;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Asul:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Styles -->
+    
     <link rel="stylesheet" href="events_styles.css" />
-    <link rel="stylesheet" href="style.css">
+   
   </head>
   <body>
     <div class="background-stars"></div>
-    
+
     <nav>
-    <div class="nav-left">
-      <img src="logo.png" class="logo" alt="">
-    </div>
-    <div class="nav-center">
-      <a href="hero.html">HOME</a>
-      <a href="#about">ABOUT US</a>
-      <a href="events.html">EVENTS</a>
-      <a href="#achivements">ACHIVEMENTS</a>
-      <a href="gallery.html">GALLERY</a>
-    </div>
-  </nav>
+      <div class="nav-left">
+        <img src="logo.png" class="logo" alt="" />
+      </div>
+      <div class="nav-center">
+        <a href="hero.html">HOME</a>
+        <a href="#about">ABOUT US</a>
+        <a href="events.html">EVENTS</a>
+        <a href="#achivements">ACHIVEMENTS</a>
+        <a href="gallery.html">GALLERY</a>
+      </div>
+
+    </nav>
+
+    <!-- Hamburger -->
+<div class="hamburger" id="hamburger">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <a href="hero.html">HOME</a>
+  <a href="#about">ABOUT US</a>
+  <a href="events.html">EVENTS</a>
+  <a href="#achivements">ACHIEVEMENTS</a>
+  <a href="gallery.html">GALLERY</a>
+</div>
+
+
 
     <!-- ================= MAIN PAGE ================= -->
-    <main class="events-section">\
+    <main class="events-section">
       <!-- EVENTS STATIC IMAGE -->
       <div class="event-container">
         <div class="event-item">
-            <img src="" alt="icarus">
+          <img src="icarus.png" alt="Icarus" class="event-static-image" />
         </div>
       </div>
     </main>
 
     <section id="events">
-    <div class="slider-container">
-      <button class="control-btn prev-btn" onclick="prev()">◀</button>
+      <div class="slider-container">
+        <!-- Prev Button with Image -->
+        <button id="carousel-prev" class="control-btn">
+          <img src="left_arrow.png" alt="Previous" />
+        </button>
+
         <div class="cards-viewport" id="cards-viewport">
           <div class="cards-track" id="cards-track">
+            <!-- JS will inject event cards here -->
           </div>
         </div>
-      <button class="control-btn next-btn" onclick="next()">▶</button>
-    </div>
-  
-  </section>
 
-    
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-      <div class="footer-content">
-        
-        <!-- Club Logo -->
-        <div class="footer-logo">
-          <img src="logo.png" alt="Aerounwired Logo" />
-        </div>
-
-        <!-- Quick Links -->
-        <div class="footer-links">
-          <h3>QUICK LINKS</h3>
-          <ul>
-            <li><a href="hero.html">HOME</a></li>
-            <li><a href="hero.html">ABOUT US</a></li>
-            <li><a href="events.html">EVENTS</a></li>
-            <li><a href="achievements.html">ACHIEVEMENTS</a></li>
-            <li><a href="gallery.html">GALLERY</a></li>
-          </ul>
-        </div>
-
-        <!-- Location -->
-        <div class="footer-location">
-          <h3>LOCATION</h3>
-          <iframe class="club-map" src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d978.0472270673155!2d75.936939!3d11.3208989!3m2!1i1024!2i768!4f13.1!2m1!1sclub%20aero%20unwired!5e0!3m2!1sen!2sin!4v1756068554749!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="70" height="70" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" disableDefaultUI=true zoom=15 maptype=roadmap></iframe>
-          <p>1<sup>st</sup> Floor , milma canteen , NITC</p>
-        </div>
-
-        <!-- Socials -->
-        <div class="footer-social">
-          <h3>CONNECT WITH US</h3>
-          <ul>
-            <li>
-              <a href="https://www.instagram.com/club_aerounwired?igsh=MXYxcXVjNmVpend2cA==" target="_blank">
-                <img src="instagram_logo.png" alt="Instagram" /> Instagram
-              </a>
-            </li>
-            <li>
-              <a href="mailto:aerounwired@nitc.ac.in">
-                <img src="gmail_logo.png" alt="Gmail" /> Gmail
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/company/aerounwired/" target="_blank">
-                <img src="linkedin_logo.png" alt="LinkedIn" /> LinkedIn
-              </a>
-            </li>
-          </ul>
-        </div>
-
+        <!-- Next Button with Image -->
+        <button id="carousel-next" class="control-btn">
+          <img src="right_arrow.png" alt="Next" />
+        </button>
       </div>
 
-      <!-- Bottom Note -->
-      <!-- <p class="footer-bottom">
-        Aerounwired club ©2025, NITC. All rights reserved.
-      </p> -->
-    </footer>
+      <!-- Dots indicator -->
+      <div id="carousel-dots"></div>
+    </section>
+
+
+
+
+ <!-- ================= FOOTER =================  -->
+
+   <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="logo.png" alt="Aerounwired Club Logo">
+    </div>
+
+    <div class="footer-links">
+      <h3>QUICK LINKS</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Achievements</a></li>
+        <li><a href="#">Gallery</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-location">
+      <h3>LOCATION</h3>
+      <iframe class="club-map"
+        src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d978.0472270673155!2d75.936939!3d11.3208989!3m2!1i1024!2i768!4f13.1!2m1!1sclub%20aero%20unwired!5e0!3m2!1sen!2sin!4v1756068554749!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="70" height="70" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" disableDefaultUI=true zoom=15 maptype=roadmap></iframe>
+       
+      </iframe>
+      <p>1<sup>st</sup> Floor, Milma Canteen, NITC</p>
+    </div>
+
+    <div class="footer-social">
+  <h3>CONNECT WITH US</h3>
+  <ul>
+    <li>
+      <a href="https://www.instagram.com/club_aerounwired" target="_blank" rel="noopener noreferrer">
+        <img src="instagram_logo.png" alt="Instagram" /> Instagram
+      </a>
+    </li>
+    <li>
+      <a href="mailto:aerounwired@nitc.ac.in">
+        <img src="gmail_logo.png" alt="Gmail" /> Gmail
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/company/aerounwired/" target="_blank" rel="noopener noreferrer">
+        <img src="linkedin_logo.png" alt="LinkedIn" /> LinkedIn
+      </a>
+    </li>
+  </ul>
+</div>
+
+  </div>
+</footer>
+
+
 
     <!-- ================= SCRIPT ================= -->
     <script src="events_scripts.js"></script>
-    <script src="event.js"></script>
-    <script src="script.js"></script>
+    <!-- <script src="event.js"></script> -->
+    <!-- <script src="script.js"></script> -->
   </body>
 </html>
