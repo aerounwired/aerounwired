@@ -1,0 +1,313 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+* {
+  background-color: #000;
+  background-image: url(stars.png);
+}
+
+body, html {
+  font-family: "Legend";  
+  background: #000 url('stars.png') no-repeat center center / cover;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+/* ================= meet the people ================= */
+.mobileview{
+  display: none;
+}
+.mobileview-500{
+  display: none;
+}
+.grid-section {
+  flex: 1;
+  text-align: center;
+  padding: 2vw 8vw;
+  margin-top: 1vw;  
+}
+.grid-container-1{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 1vw;
+  position: relative;
+  margin-left: 15vh;
+  margin-left:50px;
+}
+.grid-container-2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 1vw;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 5vh;
+  margin-left: 15vh;
+  margin-left:50px;  
+}
+.grid-title {
+  font-family: "Lexend", sans-serif;
+  font-size: 2rem;
+  color: #0C8CE9;
+  margin-bottom: 4vw;
+  font-weight: 600;
+}
+.grid-item-1{
+  aspect-ratio: 1.5/1;
+  border-radius: 1.5vw;
+  background: white;   
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width:12vw;
+  height:25vh;
+   overflow: hidden;
+   border-bottom-left-radius: 0px;
+   border-bottom-right-radius: 0px;    
+}
+.grid-item-2 {
+  aspect-ratio: 1.5/1;
+  border-radius: 2vw;
+  margin-top:-15vh;
+  background-color: rgba(2, 18, 246, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-image: none;  
+  border: 0.2vw solid #0c1fe9  ;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width:12vw;
+  height:25vh;
+  overflow: hidden;  
+}
+/* =================junior executives================= */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 1;  
+}
+.title {
+  color: #0C8CE9;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 60px;
+  letter-spacing: 1px;
+}
+.honeycomb-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+  margin-top: -20px;   
+}
+.hex-row {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.hex-row:nth-child(2) {
+  margin-left: -20px;
+}
+.hex-row:nth-child(4) {
+  margin-left: 30px;
+}
+.hex-row:nth-child(6) {
+  margin-left: 30px;
+}
+.hexagon {  
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hexagon.large {
+background-color:white;
+  width: 110px;
+  height: 120px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hexagon.small {          
+background-image: none;
+  width: 70px;
+  height: 80px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.hex-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background-color: white;
+  background-image: none;
+  
+}
+
+@media (max-width:1100px) {
+  .laptopview{
+    display: none;
+  }
+  .mobileview{
+    display: block;
+  }
+  .grid-container-1,
+  .grid-container-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  
+}
+
+.grid-item-1{
+  aspect-ratio: 1.5/1;
+  border-radius: 6vw;
+  background: white;   
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width:25vw;
+  height:20vh;
+   overflow: hidden;
+   border-bottom-left-radius: 0px;
+   border-bottom-right-radius: 0px;    
+}
+.grid-item-2 {
+  aspect-ratio: 1.5/1;
+  border-radius: 8vw;
+  margin-top:-10vh;
+  background-color: rgba(2, 18, 246, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-image: none; 
+  border: 0.2vw solid #0c1fe9  ;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width:25vw;
+  height:20vh;
+  overflow: hidden;  
+}
+}       
+
+@media (max-width: 768px) {
+  .laptopview{
+  display:none;
+
+  }
+  .mobileview-500{
+  display: none;
+  }
+  .mobileview{
+  display:block;
+}
+.title {
+  color: #0C8CE9;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 80px;
+  letter-spacing: 1px;
+}
+
+.hexagon.large {
+  background-color:white;
+  width: 110px;
+  height: 120px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+
+.hexagon.small {          
+  background-image: none;
+  width: 70px;
+  height: 80px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hexagon:hover {
+  background: #00bfff;
+  transform: scale(1.05);
+}
+}
+@media (max-width:500px) {
+  .mobileview{
+    display:none;
+  } 
+  .laptopview{
+    display: none;
+
+  }
+  .mobileview-500{
+    display: block;
+  }
+  .grid-container-1{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 1vw;
+  position: relative;
+  margin-left:50px;
+}
+.grid-container-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 1vw;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 5vh;
+  margin-left:50px;  
+}
+
+.grid-item-1{
+  aspect-ratio: 1.5/1;
+  border-radius: 6vw;
+  background: white;   
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width:25vw;
+  height:13vh;
+  overflow: hidden;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  
+}
+.grid-item-2 {
+  aspect-ratio: 1.5/1;
+  border-radius: 8vw;
+  margin-top:-10vh;
+  background-color: rgba(2, 18, 246, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-image: none; 
+  border: 0.2vw solid #0c1fe9  ;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width:25vw;
+  height:17vh;
+  overflow: hidden;  
+}
+.hex-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hexagon.large {
+  background-color:white;
+  width: 70px;
+  height: 90px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+.hexagon.small {          
+  background-image: none;
+  width: 50px;
+  height: 60px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+}
+    
+
+
