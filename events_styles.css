@@ -155,6 +155,10 @@ nav {
   color: white;
   font-weight: 600;
 }
+.footer-location{
+  max-width: 10vw;
+  aspect-ratio: 1;
+}
 
 .footer-social ul li a {
   display: flex;
@@ -179,7 +183,9 @@ nav {
   height: auto;
   background: #000;
 }
-
+.footer-bottom{
+  font-size: 1vw;
+}
 
 
 /* =================MAIN================= */
@@ -412,7 +418,7 @@ nav {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 500px;
+  height: 700px;
 }
 
 #cards-track {
@@ -542,7 +548,7 @@ nav {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 200px;
+  height: 300px;
 }
 
 #cards-track {
@@ -586,6 +592,18 @@ nav {
 
   /* ================= FOOTER -mobile================= */
 
+ .footer {
+  width: 100%;
+  margin: 2vw 0vw;
+  
+background: 
+    linear-gradient(90deg, transparent 50%, transparent 50%),
+    url("background_footer.png") center/cover no-repeat;
+  
+  /* Remove border and box-shadow */
+  border: none;
+  box-shadow: none;
+}
   .footer-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -649,6 +667,7 @@ nav {
     grid-area: location;
     justify-self: center;
     text-align: center;
+    max-width: 20vw;
   }
 
   .footer-links h3,
@@ -669,11 +688,16 @@ nav {
     font-size: 2vw;
     margin-top: 2vw;
     max-width: 40vw;
+    
   }
 
   .club-map {
     width: 100%;
     height: 15vw;
     border-radius: 1vw;
+  }
+  .footer-bottom{
+    font-size: 2.1vw;
+    margin-bottom: 3vw;
   }
 }
