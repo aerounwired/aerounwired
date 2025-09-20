@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const eventData = [
     { name: "Computational Fluid Dynamics", image: "fluid_dynamics.png" },
@@ -7,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Drone-Tech Workshop", image: "drone.png" },
     { name: "Aircraft-Design Workshop", image: "aircraft.png" }
   ];
+
+  const n = 5; // Total number of cards
 
   const track = document.getElementById("cards-track");
   const prevBtn = document.getElementById("carousel-prev");
@@ -27,7 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = Array.from(track.querySelectorAll(".event-card"));
   const total = cards.length;
   let index = 0; 
-
+  let direction = 0;
+  let lastVisibleIndices = new Set();
 
   dotsContainer.innerHTML = "";
   eventData.forEach((_, i) => {
@@ -36,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (i === 0) dot.classList.add("active");
     dot.addEventListener("click", () => {
       index = i;
+      direction = 0; // No animation for dot click
       render();
     });
     dotsContainer.appendChild(dot);
@@ -47,74 +50,145 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-
-function render() {
-  const cardWidth = cards[0].offsetWidth;
-  const gap = 40; 
-
-  cards.forEach((card) => {
-    card.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-    card.style.position = "absolute";
-    card.style.left = "50%";
-    card.style.top = "50%";
-    card.style.transformOrigin = "center center";
-    card.style.opacity = "0";
-    card.style.zIndex = "0";
-  });
-
-  const positions = [-2, -1, 0, 1, 2];
-  positions.forEach((offset) => {
-    const cardIndex = (index + offset + total) % total;
-    const card = cards[cardIndex];
-
+  function getConfig() {
+    const isMobile = window.innerWidth < 768; // Adjust breakpoint as needed
     
-    
-    let shiftX = offset * (cardWidth * 0.9 + gap);
+    return {
+      isMobile,
+      visibleCount: isMobile ? 3 : 5,
+      gap: isMobile ? 45 : 45, // Smaller gap on mobile
+      maxScale: isMobile ? 1.6 : 1.3 // Less scaling on mobile
+    };
+  }
 
-    let scale = 0.7;
-    let opacity = 0.6;
+  function render() {
+    const cardWidth = cards[0].offsetWidth;
+    const config = getConfig();
+    const step = (cardWidth * 1.05) + config.gap; // To prevent overlap with scaling
+    const half = Math.floor(config.visibleCount / 2);
 
-    if (offset === 0) {
-      scale = 1.1; 
-      opacity = 1;
-    } else if (Math.abs(offset) === 1) {
-      scale = 0.9;
-      opacity = 0.9;
-    } else {
-      scale = 0.8;
-      opacity = 0.75;
+    const positions = [];
+    for (let i = -half; i <= half; i++) {
+      positions.push(i);
     }
 
-    card.style.opacity = opacity.toString();
-    card.style.zIndex = String(5 - Math.abs(offset));
-    card.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
+    const currentVisibleIndices = new Set(
+      positions.map((offset) => (index + offset + total) % total)
+    );
+
+    cards.forEach((card) => {
+      card.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+      card.style.position = "absolute";
+      card.style.left = "50%";
+      card.style.top = "50%";
+      card.style.transformOrigin = "center center";
+      card.style.zIndex = "0";
+      // Note: No opacity reset here
+    });
+
+    if (direction !== 0) {
+      const outgoingIndices = [...lastVisibleIndices].filter(
+        (i) => !currentVisibleIndices.has(i)
+      );
+      const exitOffset = direction > 0 ? half + 1 : -half - 1;
+      const exitShift = exitOffset * step;
+      const exitScale = 1.0;
+
+      outgoingIndices.forEach((outIdx) => {
+        const card = cards[outIdx];
+        card.style.opacity = "0";
+        card.style.transform = `translate(calc(-50% + ${exitShift}px), -50%) scale(${exitScale})`;
+        card.style.zIndex = "2";
+      });
+    }
+
+    positions.forEach((offset) => {
+      const cardIndex = (index + offset + total) % total;
+      const card = cards[cardIndex];
+
+      let shiftX = offset * step;
+      let scale = offset === 0 ? config.maxScale : 1.0;
+      let opacity = 1;
+
+      card.style.opacity = opacity.toString();
+      card.style.zIndex = String(5 - Math.abs(offset));
+      card.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
+    });
+
+    // Handle non-visible, non-outgoing cards (set opacity 0 without transition)
+    const activeIndices =
+      direction !== 0
+        ? new Set([...currentVisibleIndices, ...lastVisibleIndices])
+        : currentVisibleIndices;
+    cards.forEach((card, cardIdx) => {
+      if (!activeIndices.has(cardIdx)) {
+        card.style.transition = "0s";
+        card.style.opacity = "0";
+      }
+    });
+
+    lastVisibleIndices = currentVisibleIndices;
+    direction = 0; // Reset direction after setting styles
+
+    updateDots();
+  }
+
+  window.addEventListener("resize", () => {
+    direction = 0; // No animation on resize
+    render();
   });
 
-  updateDots();
-}
-window.addEventListener("resize", () => {
-  render();
-});
-
-
-
   function next() {
-    index = (index + 1) % total;
+    const newIndex = (index - 1 + total) % total;
+    direction = 1; // Moving cards right (rotate right)
+
+    // Prepare incoming card (from left)
+    const config = getConfig();
+    const half = Math.floor(config.visibleCount / 2);
+    const step = (cards[0].offsetWidth * 1.05) + config.gap; // Match render calc
+
+    const incomingOffset = -half - 1;
+    const incomingCardIndex = (newIndex + (-half) + total) % total;
+    const incomingCard = cards[incomingCardIndex];
+
+    incomingCard.style.transition = "0s";
+    let shiftX = incomingOffset * step;
+    let scale = 1.0;
+    incomingCard.style.opacity = "0"; // Fade in during slide
+    incomingCard.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
+
+    index = newIndex;
     render();
   }
 
   function prev() {
-    index = (index - 1 + total) % total;
+    const newIndex = (index + 1 + total) % total;
+    direction = -1; // Moving cards left
+
+    // Prepare incoming card (from right)
+    const config = getConfig();
+    const half = Math.floor(config.visibleCount / 2);
+    const step = (cards[0].offsetWidth * 1.05) + config.gap; // Match render calc
+
+    const incomingOffset = half + 1;
+    const incomingCardIndex = (newIndex + half + total) % total;
+    const incomingCard = cards[incomingCardIndex];
+
+    incomingCard.style.transition = "0s";
+    let shiftX = incomingOffset * step;
+    let scale = 1.0;
+    incomingCard.style.opacity = "0"; // Fade in during slide
+    incomingCard.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
+
+    index = newIndex;
     render();
   }
 
   prevBtn.addEventListener("click", prev);
   nextBtn.addEventListener("click", next);
 
- 
   render();
 });
-
 
 
 
