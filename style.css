@@ -657,10 +657,10 @@ section {
 }
 
 #gallery {
-  background: #000000f4 url(stars.png) center/cover no-repeat;
+  background: #000000f4 url(stars.png) center/cover no-repeat; 
+  min-height: 100vh; /* optional: ensure at least full viewport on large screens */
   padding: 2rem 5rem;
-  display: block !important;
-  height: 100vh !important;
+  display: block
 }
 
 .gallery {
