@@ -24,7 +24,7 @@ let achievehtml = achievedata.map((data, index) => {
     return `
       <div class="container right-container">
         <div class="text-box text-box-right">
-         <div class="size2">
+         <div class="size">
           <h2>${data.name}</h2>
           <small>${data.year}</small>
         </div>
