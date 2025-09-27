@@ -1,38 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>AEROUNWIRED</title>
-<!--     for responsive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Asul:wght@400;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<head>
+  <title>AEROUNWIRED</title>
+  <link href="https://fonts.googleapis.com/css2?family=Asul:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="gallery_styles.css">
+  
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="gallery_styles.css" />
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    
-    <!-- ================= NAVBAR ================= -->
-    <nav>
-    <div class="nav-left">
-      <img src="logo.png" class="logo" alt="">
-    </div>
-    <div class="hamburger" id="hamburger">
-      ☰
-    </div>
-    <div class="nav-center" id="nav-center">
-      <a href="index.html">HOME</a>
-      <a href="meet-the-people.html">TEAM</a>
-      <a href="events.html">EVENTS</a>
-      <a href="achievements.html">ACHIVEMENTS</a>
-      <a href="gallery.html">GALLERY</a>
-    </div>
-  </nav>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+</head>
+
+<body>
+  <section id="home">
+
+
+
+ <!-- ================= VAVBAR ,SIDEBAR =================  -->
+
+  <nav>
+      <div class="nav-left">
+        <img src="images/logo.png" class="logo" alt="Aerounwired Logo" />
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <div></div>
+        <div></div>
+        <div></div>
+      </button>
+      <div class="nav-center" id="nav-center">
+        <a href="index.html">HOME</a>
+        <a href="meet-the-people.html">TEAM</a>
+        <a href="events.html">EVENTS</a>
+        <a href="achievements.html">ACHIVEMENTS</a>
+        <a href="gallery.html">GALLERY</a>
+      </div>
+      <div class="sidebar" id="sidebar">
+        <a href="index.html">HOME</a>
+        <a href="meet-the-people.html">TEAM</a>
+        <a href="events.html">EVENTS</a>
+        <a href="achievements.html">ACHIVEMENTS</a>
+        <a href="gallery.html">GALLERY</a>
+      </div>
+    </nav>
+  
+  
+ <!-- ==================================  -->
+
+
+
+
 
     <!-- ================= GALLERY ================= -->
     <main class="grid-section">
@@ -68,67 +88,70 @@
       </div>
     </main>
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-      <div class="footer-content">
-        
-        <!-- Club Logo -->
-        <div class="footer-logo">
-          <img src="logo.png" alt="Aerounwired Logo" />
-        </div>
 
-        <!-- Quick Links -->
-        <div class="footer-links">
-          <h3>QUICK LINKS</h3>
-          <ul>
-            <li><a href="hero.html#home">HOME</a></li>
-            <li><a href="hero.html#about">ABOUT US</a></li>
-            <li><a href="hero.html#events">EVENTS</a></li>
-            <li><a href="hero.html#achivements">ACHIEVEMENTS</a></li>
-            <li><a href="gallery.html">GALLERY</a></li>
-          </ul>
-        </div>
 
-        <!-- Location -->
-        <div class="footer-location">
-          <h3>LOCATION</h3>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d978.0472270673155!2d75.936939!3d11.3208989!3m2!1i1024!2i768!4f13.1!2m1!1sclub%20aero%20unwired!5e0!3m2!1sen!2sin!4v1756068554749!5m2!1sen!2sin"style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="70" height="70" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" disableDefaultUI=true zoom=15 maptype=roadmap></iframe>
-          <p>1<sup>st</sup> Floor , milma canteen , NITC</p>
-        </div>
 
-        <!-- Socials -->
-        <div class="footer-social">
-          <h3>CONNECT WITH US</h3>
-          <ul>
-            <li>
-              <a href="https://www.instagram.com/club_aerounwired?igsh=MXYxcXVjNmVpend2cA==" target="_blank">
-                <img src="instagram_logo.png" alt="Instagram" /> Instagram
-              </a>
-            </li>
-            <li>
-              <a href="mailto:aerounwired@nitc.ac.in">
-                <img src="gmail_logo.png" alt="Gmail" /> Gmail
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/company/aerounwired/" target="_blank">
-                <img src="linkedin_logo.png" alt="LinkedIn" /> LinkedIn
-              </a>
-            </li>
-          </ul>
-        </div>
 
-      </div>
+  
 
-      <!-- Bottom Note -->
-      <!-- <p class="footer-bottom">
+ <!-- ================= FOOTER =================  -->
+
+   <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="images/logo.png" alt="Aerounwired Club Logo">
+    </div>
+
+    <div class="footer-links">
+      <h3>QUICK LINKS</h3>
+      <ul>
+         <li><a href="index.html">Home</a></li>
+        <li><a href="meet-the-people.html">Team</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="achievements.html">Achievements</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-location">
+      <h3>LOCATION</h3>
+      <iframe class="club-map"
+        src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d978.0472270673155!2d75.936939!3d11.3208989!3m2!1i1024!2i768!4f13.1!2m1!1sclub%20aero%20unwired!5e0!3m2!1sen!2sin!4v1756068554749!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="70" height="70" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" disableDefaultUI=true zoom=15 maptype=roadmap></iframe>
+       
+      </iframe>
+      <p>1<sup>st</sup> Floor, Milma Canteen, NITC</p>
+    </div>
+
+    <div class="footer-social">
+  <h3>CONNECT WITH US</h3>
+  <ul>
+    <li>
+      <a href="https://www.instagram.com/club_aerounwired" target="_blank" rel="noopener noreferrer">
+        <img src="images/instagram_logo.png" alt="Instagram" /> Instagram
+      </a>
+    </li>
+    <li>
+      <a href="mailto:aerounwired@nitc.ac.in">
+        <img src="images/gmail_logo.png" alt="Gmail" /> Gmail
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/company/aerounwired/" target="_blank" rel="noopener noreferrer">
+        <img src="images/linkedin_logo.png" alt="LinkedIn" /> LinkedIn
+      </a>
+    </li>
+  </ul>
+</div>
+
+  </div>
+      <p class="footer-bottom">
         Aerounwired club ©2025, NITC. All rights reserved.
-      </p> -->
-    </footer>
+      </p>
+</footer>
+ <!-- ==================================  -->
 
-    <!-- ================= SCRIPT ================= -->
-    <script src="gallery_scripts.js"></script>
-    
 
-  </body>
+</body>
+<script src="gallery_scripts.js"></script>
+
 </html>

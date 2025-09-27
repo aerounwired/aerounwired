@@ -1,27 +1,43 @@
+//==============SIDEBAR-hamburger===================
 
-const hamburger = document.querySelector('.hamburger');
-const navCenter = document.querySelector('.nav-center');
 
-// when hamburger clicked
-hamburger.addEventListener('click', () => {
-  navCenter.classList.toggle('active');
-  hamburger.classList.toggle('open'); 
-});
 
-// Close sidebar when a link is clicked
-document.querySelectorAll('.nav-center a').forEach(link => {
-  link.addEventListener('click', () => {
-    navCenter.classList.remove('active');
-    hamburger.classList.remove('open');
-  });
-});
+document.addEventListener("DOMContentLoaded", () => {
+        const hamburger = document.getElementById("hamburger");
+        const sidebar = document.getElementById("sidebar");
 
-// Close sidebar if clicked outside 
-document.addEventListener('click', (e) => {
-  if (!navCenter.contains(e.target) && !hamburger.contains(e.target)) {
-    navCenter.classList.remove('active');
-    hamburger.classList.remove('open');
-  }
-});
+        const toggleSidebar = (e) => {
+          e.stopPropagation();
+          const isActive = hamburger.classList.toggle("active");
+          sidebar.classList.toggle("active");
+          hamburger.setAttribute("aria-expanded", isActive);
+        };
 
+        hamburger.addEventListener("click", toggleSidebar);
+        hamburger.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggleSidebar(e);
+          }
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+            hamburger.classList.remove("active");
+            sidebar.classList.remove("active");
+            hamburger.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        sidebar.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            sidebar.classList.remove("active");
+            hamburger.setAttribute("aria-expanded", "false");
+          });
+        });
+      });
+
+
+//======================================================================
 

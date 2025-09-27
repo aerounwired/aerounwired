@@ -1,4 +1,4 @@
-/*================= OVERALL SETTINGS================= */
+/* ================Overall Settings================== */
 
 * {
   margin: 0;
@@ -6,35 +6,24 @@
   box-sizing: border-box;
 }
 
-/* Fixed background */
-.background-stars {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -20 !important;
-  background: #000 url("stars.png") repeat;
-  pointer-events: none;
-}
 
 body,
 html {
   font-family: "Lexend", sans-serif;
-  background-color: #000;
+  background: #000000 url("images/stars.png") repeat center/cover fixed;
   color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 1;
+  margin: 0;
+  overflow-x: hidden;
 }
 
+/*=====================================*/
 
-
-
-
-/* ================= NAVBAR ================= */
+/* ===================Navbar (Desktop)======================== */
 
 nav {
   position: relative;
@@ -44,7 +33,7 @@ nav {
   padding-top: 1rem;
   background: transparent;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 4rem;
   z-index: 1000;
 }
@@ -55,137 +44,35 @@ nav {
   margin-left: 5vw;
   padding-top: 4vh;
 }
+
 .nav-center {
   flex: 0 1 auto;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   padding-top: 3vh;
-  gap: 3rem;
+  gap: 4vw;
   width: 40vw;
+  margin-right: 5vw;
 }
 
 .nav-center a {
   margin-top: 2rem;
   text-decoration: none;
   color: rgb(255, 255, 255);
-  font-size: 1.2rem;
-  font-family: "lexand", sans-serif;
+  font-size: 1.5vw;
+  font-family: "Lexend", sans-serif;
   font-weight: 700;
   transition: color 0.3s;
   white-space: nowrap;
 }
 
 .nav-center a:hover {
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
+/*=====================================*/
 
 
-
-
-/* ================= FOOTER -DESKTOP================= */
-
-.footer {
-  background: rgba(0, 0, 0, 0.85) url("stars.png") repeat center/cover;
-  padding: 3vw 5vw;
-  border: 0.1vw solid #00aaff;
-  border-radius: 2vw;
-  margin: 2vw 5vw;
-  box-shadow: 0 0 0.5vw #b8c6aa, 0 0 1.5vw #00aaff, 0 0 2.5vw #67c3d0;
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: start;
-  gap: 3vw;
-  text-align: left;
-}
-.footer-logo img {
-  height: 10vw;
-  margin: 1.8vw 0 1vw;
-}
-
-.footer h3 {
-  margin-bottom: 1.2vw;
-  font-family: "Lexend", sans-serif;
-  font-size: 1.3vw;
-  color: #fff;
-}
-
-.footer ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer a {
-  color: white;
-  text-decoration: none;
-  display: block;
-  margin: 0.5vw 0;
-  font-size: 1vw;
-  transition: color 0.3s, text-shadow 0.3s;
-  padding-left: 1vw;
-}
-
-.footer a:hover {
-  color: #0c8ce9;
-  text-shadow: 0 0 5px #0c8ce9, 0 0 10px #0c8ce9;
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 2vw;
-  font-size: 0.9vw;
-  color: #bbb;
-}
-
-.footer-location p {
-  font-size: 1.2vw;
-  color: #e0e0e0;
-  font-family: "Lexend", sans-serif;
-  margin-top: 1vw;
-  line-height: 1.5;
-  max-width: 14vw;
-}
-
-.footer-location p sup {
-  font-size: 0.6em;
-  vertical-align: super;
-  color: white;
-  font-weight: 600;
-}
-.footer-location{
-  max-width: 10vw;
-  aspect-ratio: 1;
-}
-
-.footer-social ul li a {
-  display: flex;
-  align-items: center;
-  gap: 0.8vw;
-  text-decoration: none;
-  color: white;
-  font-size: 1vw;
-  transition: color 0.3s;
-}
-
-.footer-social ul li a img {
-  height: 1.5vw;
-  width: auto;
-}
-
-.club-map {
-  border-radius: 0.5vw;
-  border: 0.1vw solid #00aaff;
-  box-shadow: 0 0 0.8vw #00aaff, 0 0 1.5vw #67c3d0;
-  width: 100%;
-  height: auto;
-  background: #000;
-}
-.footer-bottom{
-  font-size: 1vw;
-}
 
 
 /* =================MAIN================= */
@@ -208,6 +95,7 @@ nav {
   overflow: hidden; 
   position: relative;
   z-index: 1; 
+  margin-top: 10vw;
 }
 
 .event-item img {
@@ -231,7 +119,7 @@ nav {
   padding-bottom: 0px !important;
 }
 
-/* =================CAROUSEL =================*/
+/* =================CAROUSEL && MAIN IMAGE=================*/
 .cards-viewport {
   width: 90%;
   overflow: hidden;
@@ -387,6 +275,7 @@ nav {
   transform: translateX(-50%);
   z-index: 5;
   margin-top: 1vw;
+  margin-bottom: 3vw;
 }
 
 
@@ -414,6 +303,8 @@ nav {
   z-index: 2;
 }
 
+
+
 #cards-viewport {
   position: relative;
   overflow: hidden;
@@ -440,57 +331,63 @@ nav {
   height: 100%;
   object-fit: cover;
 }
-@media (min-width: 769px) {
-  nav {
-    display: flex;
+
+
+
+/*=====================================================*/
+
+
+
+
+
+
+
+
+
+
+
+/* =========================Mobile/Tablet============== */
+@media (max-width: 748px) {
+  .logo {
+    height: 100px;
+    position: relative;
+    top: -20px;
   }
 
-  .hamburger {
-    display: none;
-  }
-  .sidebar {
-    display: none;
-  }
-}
-
-
-
-
-
-
-/* ================= MOBILE / TABLET ================= */
-@media (max-width: 768px) {
-  .nav-center {
+  /* Hide navbar on mobile */
+  #nav-center {
     display: none !important;
   }
-  .logo{
-    width: 20vw;
-    position: relative;
-    top: -2vw;
+
+
+
+
+
+
+  /* ====================Hamburger and Sidebar====================*/
+
+  .hamburger {
+    display: flex !important;
+    position: absolute;
+    top: 2.5rem;
+    right: 1.5rem;
+    width: 30px;
+    height: 30px;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+    z-index: 3000;
+    background: transparent;
+    border: 0px;
   }
 
-/* ================= HAMBURGER  =================*/
-.hamburger {
-  display: flex !important;      
-  position: relative;  
-  top: -15vw;     
-  right: -85vw;         
-  width: 35px;
-  height: 30px;
-  flex-direction: column;
-  justify-content: space-around;
-  cursor: pointer;
-  z-index: 3000;                 
-}
-
-.hamburger div {
-  width: 100%;
-  height: 4px;
-  background: white;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
+  .hamburger div {
+    width: 100%;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
 
   .hamburger.active div:nth-child(1) {
     transform: rotate(45deg) translate(8px, 8px);
@@ -504,106 +401,134 @@ nav {
     transform: rotate(-45deg) translate(6px, -6px);
   }
 
+  .nav-center {
+    display: flex !important; /* Always defined for desktop */
+  }
+
   .sidebar {
     position: fixed;
     top: 0;
-    right: -45vw;
-    width: 40vw;
+    right: calc(-1 * clamp(250px, 50vw, 300px));
+    width: clamp(200px, 50vw, 200px);
     height: 100%;
-    background: rgba(0, 38, 255, 0.5);
+    background: rgba(0, 38, 255, 0.6);
     border-left: 2px solid #0ff;
     box-shadow: 0 0 10px #000dff, 0 0 20px #000dff, 0 0 40px #000dff;
     display: flex;
     flex-direction: column;
-    padding: 10vh 3vw;
-    gap: 3vh;
+    padding: 5rem 2rem;
+    gap: 4vh;
     transition: right 0.3s ease;
     z-index: 1050;
   }
 
+  .sidebar.active {
+    right: 0;
+  }
+
   .sidebar a {
-    color: white;
     font-size: 1rem;
+    padding: 0.5rem 1rem;
+    color: white;
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, background 0.3s ease;
   }
 
   .sidebar a:hover {
     color: #0c8ce9;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  /*=====================================*/
+
+  /*  =================CAROUSEL==========================================*/
+
+  .event-item {
+    width: 60vw;
   }
 
-  .sidebar.active {
-    right: 0; 
+  #events h1{
+    font-size: 2rem;
+    padding-bottom: 1rem;
   }
-
-
-/*  =================CAROUSEL  =================*/
-
-  .event-item{
-    width: 80vw;
-  }
-
   #cards-viewport {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+    margin: 0px;
+    padding: 0px;
+  }
+
+
+  #cards-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .event-card {
+    position: absolute;
+    width: 100px;
+    height: 150px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  .event-card.active {
+    transform: scale(1.5);
+  }
+  .workshopName {
+    font-size: 10px;
+  }
+  #carousel-prev img,
+  #carousel-next img {
+    width: 18px;
+    height: 18px;
+    display: block;
+    margin: 0vw 2vw;
+  }
+  #carousel-dots .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #bbb;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-bottom: 85vw;
+    margin-top: 0px;
+  }
+  #carousel-dots{
+    top: 19rem;
+    
+  }
+.slider-container {
   position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 300px;
+  width: 82%;
+  margin: 0 auto;
+  padding-bottom: 5px;
 }
 
-#cards-track {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
+  /*========================================================================*/
 
-.event-card {
-  position: absolute;
-  width: 100px;
-  height: 150px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-.event-card.active {
-  transform: scale(1.5);
-}
-.workshopName {
-  font-size: 10px;
-}
-#carousel-prev img,
-#carousel-next img {
-  width: 18px;
-  height: 18px;
-  display: block;
-  margin: 0vw 2vw;
 
-}
-#carousel-dots .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #bbb;
-  cursor: pointer;
-  transition: background 0.3s;
-  margin-bottom: 5vw;
-  margin-top: 0px;
-}
+
+
+  
+
+
+
 
   /* ================= FOOTER -mobile================= */
 
- .footer {
-  width: 100%;
-  margin: 2vw 0vw;
-  
-background: 
-    linear-gradient(90deg, transparent 50%, transparent 50%),
-    url("background_footer.png") center/cover no-repeat;
-  
-  /* Remove border and box-shadow */
-  border: none;
-  box-shadow: none;
-}
+  .footer {
+    width: 100%;
+    margin: 2vw 0vw;
+
+    /* Remove border and box-shadow */
+    border: none;
+    box-shadow: none;
+  }
   .footer-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -614,8 +539,13 @@ background:
       "links location";
     gap: 2vw;
     justify-items: center;
-    align-items: center; 
+    align-items: center;
     text-align: center;
+
+    background: linear-gradient(90deg, transparent 50%, transparent 50%),
+      url("images/background_footer.png") center/cover no-repeat;
+
+    padding-bottom: 30px;
   }
 
   .footer-logo {
@@ -623,7 +553,7 @@ background:
     margin-top: 40px;
   }
   .footer-logo img {
-    height: 20vw !important;
+    height: 75px !important;
     display: block;
     margin: 0 auto;
   }
@@ -638,14 +568,14 @@ background:
   }
   .footer-social ul {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     gap: 8vw;
     padding: 0;
     margin: 0;
   }
   .footer-social ul li a {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     gap: 2vw;
     font-size: 2.5vw !important;
@@ -653,14 +583,13 @@ background:
     text-decoration: none;
   }
   .footer-social ul li a img {
-    height: 8vw !important;
+    height: 6vw !important;
     min-height: 32px;
   }
 
-  
   .footer-links {
     grid-area: links;
-    justify-self: center; 
+    justify-self: center;
     text-align: center;
   }
   .footer-location {
@@ -688,7 +617,6 @@ background:
     font-size: 2vw;
     margin-top: 2vw;
     max-width: 40vw;
-    
   }
 
   .club-map {
@@ -696,8 +624,138 @@ background:
     height: 15vw;
     border-radius: 1vw;
   }
-  .footer-bottom{
+  .footer-bottom {
     font-size: 2.1vw;
-    margin-bottom: 3vw;
+    text-align: center;
   }
+
+  /*===========================================*/
 }
+
+/*=====================================*/
+
+/* =============DESKTOP=============== */
+
+@media (min-width: 749px) {
+  /*====NAV , HAMBURGER,CLOSE BTN======*/
+
+  .hamburger {
+    display: none;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .nav-center {
+    display: flex;
+  }
+  /*=====================================*/
+
+  /* ================= FOOTER -DESKTOP================= */
+
+  .footer {
+    background: rgba(0, 0, 0, 0.85) url("stars.png") repeat center/cover;
+    padding: 3vw 5vw;
+    border: 0.1vw solid #00aaff;
+    border-radius: 2vw;
+    margin: 2vw 5vw;
+    box-shadow: 0 0 0.5vw #b8c6aa, 0 0 1.5vw #00aaff, 0 0 2.5vw #67c3d0;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+    gap: 3vw;
+    text-align: left;
+  }
+  .footer-logo img {
+    height: 10vw;
+    margin: 1.8vw 0 1vw;
+  }
+
+  .footer h3 {
+    margin-bottom: 1.2vw;
+    font-family: "Lexend", sans-serif;
+    font-size: 1.3vw;
+    color: #fff;
+  }
+
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 0.5vw 0;
+    font-size: 1vw;
+    transition: color 0.3s, text-shadow 0.3s;
+    padding-left: 1vw;
+  }
+
+  .footer a:hover {
+    color: #0c8ce9;
+    text-shadow: 0 0 5px #0c8ce9, 0 0 10px #0c8ce9;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 2vw;
+    font-size: 0.9vw;
+    color: #bbb;
+  }
+
+  .footer-location p {
+    font-size: 1.2vw;
+    color: #e0e0e0;
+    font-family: "Lexend", sans-serif;
+    margin-top: 1vw;
+    line-height: 1.5;
+    max-width: 14vw;
+  }
+
+  .footer-location p sup {
+    font-size: 0.6em;
+    vertical-align: super;
+    color: white;
+    font-weight: 600;
+  }
+  .footer-location {
+    max-width: 10vw;
+    aspect-ratio: 1;
+  }
+
+  .footer-social ul li a {
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+    text-decoration: none;
+    color: white;
+    font-size: 1vw;
+    transition: color 0.3s;
+  }
+
+  .footer-social ul li a img {
+    height: 1.5vw;
+    width: auto;
+  }
+
+  .club-map {
+    border-radius: 0.5vw;
+    border: 0.1vw solid #00aaff;
+    box-shadow: 0 0 0.8vw #00aaff, 0 0 1.5vw #67c3d0;
+    width: 100%;
+    height: auto;
+    background: #000;
+  }
+  .footer-bottom {
+    font-size: 1vw;
+  }
+
+  /*===========================================*/
+}
+/*=====================================*/
