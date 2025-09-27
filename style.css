@@ -116,6 +116,7 @@ section {
   height: auto !important;
   min-height: auto;
   margin: 0px;
+  margin-top: 10rem;
 }
 
 .about-layer {
@@ -420,7 +421,7 @@ section {
 
 .gallery {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 4rem;
   padding: 2% 10%;
   align-items: start;
@@ -467,6 +468,9 @@ section {
     max-width: 60%;
     margin-bottom: 20vw;
   }
+
+
+  
 
   /* ===============About Section=================*/
 
