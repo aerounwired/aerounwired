@@ -1,0 +1,695 @@
+
+/* ================Overall Settings================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body,
+html {
+  font-family: "Lexend", sans-serif;
+  background: #000000 url("images/stars.png") repeat center/cover fixed;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/*=====================================*/
+
+
+
+
+/*==============CONTENT==================================================*/
+
+
+
+h1 {
+  text-align: center;
+  font-size: 50px;
+  color: #0c8ce9;
+  padding-bottom: 5rem;
+  padding-top: 4rem;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 100px auto;
+}
+.container {
+  padding: 10px 100px;
+  position: relative;
+  width: 50%;
+  height: 350px; 
+  display: flex; 
+  align-items: center; 
+  animation: movedown 1s linear forwards;
+  opacity: 0;
+}
+@keyframes movedown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.box {
+  background-color: aliceblue;
+  width: 429px;
+  height: 257px;
+  align-self: center;
+  position: absolute;
+  right: 120px;
+  border-radius: 40px;
+  border: 1px solid #0c8ce9;
+  box-shadow: 1px 1px 40px #0c8ce9, -1px -1px 40px #0c8ce9;
+}
+.text-box {
+  position: absolute;
+  width: 70%;
+  left: 120%;
+  top: 20%;
+}
+.text-box.text-box-right {
+  position: absolute;
+  width: 70%;
+  left: -90%;
+  top: 20%;
+}
+h2 {
+  color: #0c8ce9;
+  font-size: 50px;
+}
+small {
+  color: #80caff;
+  font-size: 20px;
+}
+p {
+  font-size: 22px;
+}
+
+.left-container {
+  left: 0%;
+}
+.right-container {
+  left: 50%;
+}
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  margin-left: -3px;
+  z-index: 5;
+  background: #80caff;
+  animation: moveline 5.8s linear forwards;
+}
+@keyframes moveline {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+.container:nth-child(2) {
+  animation-delay: 1.1s;
+}
+.container:nth-child(3) {
+  animation-delay: 2.2s;
+}
+.container:nth-child(4) {
+  animation-delay: 3.3s;
+}
+.container:nth-child(5) {
+  animation-delay: 4.4s;
+}
+.container:nth-child(6) {
+  animation-delay: 5.5s;
+}
+.container:nth-child(7) {
+  animation-delay: 6.6s;
+}
+
+.left-container-arrow {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 40px;
+  z-index: 1;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid white;
+  right: 107px;
+  display: none;
+}
+.right-box {
+  left: 120px;
+}
+.right-container-arrow {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 40px;
+  z-index: 1;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid white;
+  left: 107px;
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+  }
+  .right-container-arrow,
+  .left-container-arrow {
+    display: none;
+  }
+  .text-box {
+    position: absolute;
+    width: 154px;
+    font-size: 15px;
+    font-weight: bold;
+    left: 10%;
+    top: 60%;
+  }
+  .text-box.text-box-right {
+    position: absolute;
+    width: 154px;
+    font-size: 15px;
+    font-weight: bold;
+    left: 10%;
+    top: 60%;
+  }
+  .box {
+    background-color: aliceblue;
+    width: 170px;
+    height: 95px;
+    align-self: center;
+    position: absolute;
+    top: 0px;
+    left: 30px;
+    border-radius: 30px;
+    border: 1px solid #0c8ce9;
+    box-shadow: 1px 1px 40px #0c8ce9, -1px -1px 40px #0c8ce9;
+  }
+  p {
+    font-size: 11px;
+  }
+  .left-container {
+    left: auto;
+    width: 100%;
+    height: 30vh;
+  }
+  .right-container {
+    left: auto;
+    width: 100%;
+    height: 30vh;
+  }
+  .timeline::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    top: 0;
+    left: 243px;
+    z-index: 5;
+    background: #80caff;
+    animation: moveline 5.8s linear forwards;
+  }
+
+  .size {
+    width: 100px;
+    position: absolute;
+    left: 250px;
+    top: -100px;
+    margin-right: 20px;
+  }
+  h2 {
+    font-size: 20px;
+    position: absolute;
+  }
+
+  .box {
+    position: absolute;
+    top: 10%;
+  }
+  small {
+    position: relative;
+    top: 20px;
+    font-size: 10px;
+    align-self: center;
+    left: 10px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===================Navbar (Desktop)======================== */
+
+nav {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 1rem;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  z-index: 1000;
+}
+
+.logo {
+  height: auto;
+  margin-right: 15vw;
+  margin-left: 5vw;
+  padding-top: 4vh;
+}
+
+.nav-center {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 3vh;
+  gap: 4vw;
+  width: 40vw;
+  margin-right: 5vw;
+}
+
+.nav-center a {
+  margin-top: 2rem;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 1.5vw;
+  font-family: "Lexend", sans-serif;
+  font-weight: 700;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.nav-center a:hover {
+  text-decoration: underline;
+}
+
+/*=====================================*/
+
+
+
+
+
+/* =========================Mobile/Tablet============== */
+@media (max-width: 748px) {
+  .logo {
+    height: 100px;
+    position: relative;
+    top: -20px;
+  }
+
+  /* Hide navbar on mobile */
+  #nav-center {
+    display: none !important;
+  }
+
+  h1 {
+  text-align: center;
+  font-size: 2rem;
+  max-width: 80%;
+  position: relative;
+  left: 10%;
+  color: #0c8ce9;
+  padding-bottom: 0rem;
+  padding-top: 4rem;
+}
+
+
+
+  /* ====================Hamburger and Sidebar====================*/
+
+  .hamburger {
+    display: flex !important;
+    position: absolute;
+    top: 2.5rem;
+    right: 1.5rem;
+    width: 30px;
+    height: 30px;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+    z-index: 3000;
+    background: transparent;
+    border: 0px;
+  }
+
+  .hamburger div {
+    width: 100%;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  .hamburger.active div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  .nav-center {
+    display: flex !important; /* Always defined for desktop */
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: calc(-1 * clamp(250px, 50vw, 300px));
+    width: clamp(200px, 50vw, 200px);
+    height: 100%;
+    background: rgba(0, 38, 255, 0.6);
+    border-left: 2px solid #0ff;
+    box-shadow: 0 0 10px #000dff, 0 0 20px #000dff, 0 0 40px #000dff;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 2rem;
+    gap: 4vh;
+    transition: right 0.3s ease;
+    z-index: 1050;
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+
+  .sidebar a {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, background 0.3s ease;
+  }
+
+  .sidebar a:hover {
+    color: #0c8ce9;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  /*=====================================*/
+
+
+
+
+  
+
+
+
+
+  /* ================= FOOTER -mobile================= */
+
+  .footer {
+    width: 100%;
+    margin: 2vw 0vw;
+
+   
+    border: none;
+    box-shadow: none;
+  }
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "logo logo"
+      "social social"
+      "links location";
+    gap: 2vw;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+
+    background: linear-gradient(90deg, transparent 50%, transparent 50%),
+      url("images/background_footer.png") center/cover no-repeat;
+
+    padding-bottom: 30px;
+  }
+
+  .footer-logo {
+    grid-area: logo;
+    margin-top: 40px;
+  }
+  .footer-logo img {
+    height: 75px !important;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .footer-social {
+    grid-area: social;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .footer-social h3 {
+    font-size: 3vw;
+  }
+  .footer-social ul {
+    display: flex;
+    justify-content: center;
+    gap: 8vw;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-social ul li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vw;
+    font-size: 2.5vw !important;
+    color: white;
+    text-decoration: none;
+  }
+  .footer-social ul li a img {
+    height: 6vw !important;
+    min-height: 32px;
+  }
+
+  .footer-links {
+    grid-area: links;
+    justify-self: center;
+    text-align: center;
+  }
+  .footer-location {
+    grid-area: location;
+    justify-self: center;
+    text-align: center;
+    max-width: 20vw;
+  }
+
+  .footer-links h3,
+  .footer-location h3 {
+    font-size: 3vw !important;
+    margin-bottom: 2vw;
+    max-width: 60vw !important;
+  }
+
+  .footer-links a {
+    font-size: 2.5vw !important;
+    margin: 1vw 0;
+    display: block;
+    text-align: left;
+  }
+
+  .footer-location p {
+    font-size: 2vw;
+    margin-top: 2vw;
+    max-width: 40vw;
+  }
+
+  .club-map {
+    width: 100%;
+    height: 15vw;
+    border-radius: 1vw;
+  }
+  .footer-bottom {
+    font-size: 2.1vw;
+    text-align: center;
+  }
+
+  /*===========================================*/
+}
+
+/*=====================================*/
+
+/* =============DESKTOP=============== */
+
+@media (min-width: 749px) {
+  /*====NAV , HAMBURGER,CLOSE BTN======*/
+
+  .hamburger {
+    display: none;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .nav-center {
+    display: flex;
+  }
+  /*=====================================*/
+
+
+
+
+
+
+
+
+
+
+  /* ================= FOOTER -DESKTOP================= */
+
+  .footer {
+    background: rgba(0, 0, 0, 0.85) url("stars.png") repeat center/cover;
+    padding: 3vw 5vw;
+    border: 0.1vw solid #00aaff;
+    border-radius: 2vw;
+    margin: 2vw 5vw;
+    box-shadow: 0 0 0.5vw #b8c6aa, 0 0 1.5vw #00aaff, 0 0 2.5vw #67c3d0;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+    gap: 3vw;
+    text-align: left;
+  }
+  .footer-logo img {
+    height: 10vw;
+    margin: 1.8vw 0 1vw;
+  }
+
+  .footer h3 {
+    margin-bottom: 1.2vw;
+    font-family: "Lexend", sans-serif;
+    font-size: 1.3vw;
+    color: #fff;
+  }
+
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 0.5vw 0;
+    font-size: 1vw;
+    transition: color 0.3s, text-shadow 0.3s;
+    padding-left: 1vw;
+  }
+
+  .footer a:hover {
+    color: #0c8ce9;
+    text-shadow: 0 0 5px #0c8ce9, 0 0 10px #0c8ce9;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 2vw;
+    font-size: 0.9vw;
+    color: #bbb;
+  }
+
+  .footer-location p {
+    font-size: 1.2vw;
+    color: #e0e0e0;
+    font-family: "Lexend", sans-serif;
+    margin-top: 1vw;
+    line-height: 1.5;
+    max-width: 14vw;
+  }
+
+  .footer-location p sup {
+    font-size: 0.6em;
+    vertical-align: super;
+    color: white;
+    font-weight: 600;
+  }
+  .footer-location {
+    max-width: 10vw;
+    aspect-ratio: 1;
+  }
+
+  .footer-social ul li a {
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+    text-decoration: none;
+    color: white;
+    font-size: 1vw;
+    transition: color 0.3s;
+  }
+
+  .footer-social ul li a img {
+    height: 1.5vw;
+    width: auto;
+  }
+
+  .club-map {
+    border-radius: 0.5vw;
+    border: 0.1vw solid #00aaff;
+    box-shadow: 0 0 0.8vw #00aaff, 0 0 1.5vw #67c3d0;
+    width: 100%;
+    height: auto;
+    background: #000;
+  }
+  .footer-bottom {
+    font-size: 1vw;
+  }
+
+  /*===========================================*/
+}
+/*=====================================*/
