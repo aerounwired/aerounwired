@@ -1,56 +1,45 @@
-//==============SIDEBAR-hamburger===================
-
-
+//============== SIDEBAR - hamburger ===================
 
 document.addEventListener("DOMContentLoaded", () => {
-        const hamburger = document.getElementById("hamburger");
-        const sidebar = document.getElementById("sidebar");
+  const hamburger = document.getElementById("hamburger");
+  const sidebar = document.getElementById("sidebar");
 
-        const toggleSidebar = (e) => {
-          e.stopPropagation();
-          const isActive = hamburger.classList.toggle("active");
-          sidebar.classList.toggle("active");
-          hamburger.setAttribute("aria-expanded", isActive);
-        };
+  const toggleSidebar = (e) => {
+    e.stopPropagation();
+    const isActive = hamburger.classList.toggle("active");
+    sidebar.classList.toggle("active");
+    hamburger.setAttribute("aria-expanded", isActive);
+  };
 
-        hamburger.addEventListener("click", toggleSidebar);
-        hamburger.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            toggleSidebar(e);
-          }
-        });
+  hamburger.addEventListener("click", toggleSidebar);
+  hamburger.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggleSidebar(e);
+    }
+  });
 
-        document.addEventListener("click", (e) => {
-          if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
-            hamburger.classList.remove("active");
-            sidebar.classList.remove("active");
-            hamburger.setAttribute("aria-expanded", "false");
-          }
-        });
+  document.addEventListener("click", (e) => {
+    if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+      hamburger.classList.remove("active");
+      sidebar.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+    }
+  });
 
-        sidebar.querySelectorAll("a").forEach((link) => {
-          link.addEventListener("click", () => {
-            hamburger.classList.remove("active");
-            sidebar.classList.remove("active");
-            hamburger.setAttribute("aria-expanded", "false");
-          });
-        });
-      });
-
-
-//======================================================================
+  sidebar.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      sidebar.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+    });
+  });
+});
 
 
+// ======================= MAIN ========================
 
-// =======================MAIN=======================================
-
-
-
-
-
-
-      document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const eventData = [
     { name: "Computational Fluid Dynamics", image: "competitions/fluid_dynamics.png" },
     { name: "ICARUS", image: "competitions/icarus.png" },
@@ -59,13 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Aircraft-Design Workshop", image: "competitions/aircraft.png" }
   ];
 
-  const n = 5; // Total number of cards
-
   const track = document.getElementById("cards-track");
   const prevBtn = document.getElementById("carousel-prev");
   const nextBtn = document.getElementById("carousel-next");
   const dotsContainer = document.getElementById("carousel-dots");
 
+  // Insert cards
   track.innerHTML = eventData
     .map(
       (d) => `
@@ -79,10 +67,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const cards = Array.from(track.querySelectorAll(".event-card"));
   const total = cards.length;
-  let index = 0; 
+  let index = 0;
   let direction = 0;
   let lastVisibleIndices = new Set();
 
+  // Create dots
   dotsContainer.innerHTML = "";
   eventData.forEach((_, i) => {
     const dot = document.createElement("span");
@@ -103,20 +92,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getConfig() {
-    const isMobile = window.innerWidth < 768; // Adjust breakpoint as needed
-    
+    const isMobile = window.innerWidth < 768;
     return {
       isMobile,
       visibleCount: isMobile ? 3 : 5,
-      gap: isMobile ? 45 : 45, // Smaller gap on mobile
-      maxScale: isMobile ? 1.6 : 1.3 // Less scaling on mobile
+      gap: 45,
+      maxScale: isMobile ? 1.6 : 1.3
     };
   }
 
   function render() {
     const cardWidth = cards[0].offsetWidth;
     const config = getConfig();
-    const step = (cardWidth * 1.05) + config.gap; // To prevent overlap with scaling
+    const step = (cardWidth * 1.05) + config.gap;
     const half = Math.floor(config.visibleCount / 2);
 
     const positions = [];
@@ -135,7 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
       card.style.top = "50%";
       card.style.transformOrigin = "center center";
       card.style.zIndex = "0";
-      // Note: No opacity reset here
     });
 
     if (direction !== 0) {
@@ -160,18 +147,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let shiftX = offset * step;
       let scale = offset === 0 ? config.maxScale : 1.0;
-      let opacity = 1;
 
-      card.style.opacity = opacity.toString();
+      card.style.opacity = "1";
       card.style.zIndex = String(5 - Math.abs(offset));
       card.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
     });
 
-    // Handle non-visible, non-outgoing cards (set opacity 0 without transition)
     const activeIndices =
       direction !== 0
         ? new Set([...currentVisibleIndices, ...lastVisibleIndices])
         : currentVisibleIndices;
+
     cards.forEach((card, cardIdx) => {
       if (!activeIndices.has(cardIdx)) {
         card.style.transition = "0s";
@@ -180,67 +166,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     lastVisibleIndices = currentVisibleIndices;
-    direction = 0; // Reset direction after setting styles
-
+    direction = 0;
     updateDots();
   }
 
-  window.addEventListener("resize", () => {
-    direction = 0; // No animation on resize
-    render();
-  });
-
   function next() {
-  const newIndex = (index + 1 + total) % total;
-  direction = -1; // Moving cards left
+    const newIndex = (index + 1 + total) % total;
+    direction = -1; // Moving left
 
-  // Prepare incoming card (from right)
-  const config = getConfig();
-  const half = Math.floor(config.visibleCount / 2);
-  const step = (cards[0].offsetWidth * 1.05) + config.gap; // Match render calc
+    const config = getConfig();
+    const half = Math.floor(config.visibleCount / 2);
+    const step = (cards[0].offsetWidth * 1.05) + config.gap;
 
-  const incomingOffset = half + 1;
-  const incomingCardIndex = (newIndex + half + total) % total;
-  const incomingCard = cards[incomingCardIndex];
+    const incomingOffset = half + 1;
+    const incomingCardIndex = (newIndex + half + total) % total;
+    const incomingCard = cards[incomingCardIndex];
 
-  incomingCard.style.transition = "0s";
-  let shiftX = incomingOffset * step;
-  let scale = 1.0;
-  incomingCard.style.opacity = "0"; // Fade in during slide
-  incomingCard.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
+    incomingCard.style.transition = "0s";
+    incomingCard.style.opacity = "0";
+    incomingCard.style.transform = `translate(calc(-50% + ${incomingOffset * step}px), -50%) scale(1)`;
 
-  index = newIndex;
-  render();
-}
+    index = newIndex;
+    render();
+  }
 
   function prev() {
-  const newIndex = (index - 1 + total) % total;
-  direction = 1; // Moving cards right
+    const newIndex = (index - 1 + total) % total;
+    direction = 1; // Moving right
 
-  // Prepare incoming card (from left)
-  const config = getConfig();
-  const half = Math.floor(config.visibleCount / 2);
-  const step = (cards[0].offsetWidth * 1.05) + config.gap; // Match render calc
+    const config = getConfig();
+    const half = Math.floor(config.visibleCount / 2);
+    const step = (cards[0].offsetWidth * 1.05) + config.gap;
 
-  const incomingOffset = -half - 1;
-  const incomingCardIndex = (newIndex + (-half) + total) % total;
-  const incomingCard = cards[incomingCardIndex];
+    const incomingOffset = -half - 1;
+    const incomingCardIndex = (newIndex - half - 1 + total) % total;
+    const incomingCard = cards[incomingCardIndex];
 
-  incomingCard.style.transition = "0s";
-  let shiftX = incomingOffset * step;
-  let scale = 1.0;
-  incomingCard.style.opacity = "0"; // Fade in during slide
-  incomingCard.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
+    incomingCard.style.transition = "0s";
+    incomingCard.style.opacity = "0";
+    incomingCard.style.transform = `translate(calc(-50% + ${incomingOffset * step}px), -50%) scale(1)`;
 
-  index = newIndex;
-  render();
-}
+    index = newIndex;
+    render();
+  }
 
   prevBtn.addEventListener("click", prev);
   nextBtn.addEventListener("click", next);
+  window.addEventListener("resize", () => render());
 
-  render();
+  // Wait for images to load before first render
+  window.addEventListener("load", () => {
+    render();
+  });
 });
-
-
-//=======================================================================================
