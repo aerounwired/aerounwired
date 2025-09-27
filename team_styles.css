@@ -305,12 +305,13 @@ nav {
   .container {
     grid-template-columns: repeat(3, 6rem);
     column-gap: 0.7rem;
-    row-gap: 0rem; /* ≈ 0.866 × 7rem */
+    row-gap: 0rem;
+    padding: 0 1rem; /* add horizontal padding */
   }
 
   .item {
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
   }
 
   /* Odd rows */
