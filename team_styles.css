@@ -1,0 +1,730 @@
+/* ================Overall Settings================== */
+/* Overall Settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: "Lexend", sans-serif;
+  background: #000000 url("images/stars.png") repeat center/cover fixed;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/*=====================================*/
+
+/* ===================Navbar (Desktop)======================== */
+
+nav {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 1rem;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  z-index: 1000;
+}
+
+.logo {
+  height: auto;
+  margin-right: 15vw;
+  margin-left: 5vw;
+  padding-top: 4vh;
+}
+
+.nav-center {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 3vh;
+  gap: 4vw;
+  width: 40vw;
+  margin-right: 5vw;
+}
+
+.nav-center a {
+  margin-top: 2rem;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 1.5vw;
+  font-family: "Lexend", sans-serif;
+  font-weight: 700;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.nav-center a:hover {
+  text-decoration: underline;
+}
+
+/*=====================================*/
+
+/*======================= Meet the Team (Desktop Only) ==============*/
+
+/* ========== Overall ========== */
+
+.grid-section {
+  text-align: center;
+  padding: 15vw;
+}
+.grid-title {
+  color: #0c8ce9;
+  font-size: 4rem;
+  font-weight: 600;
+  padding-bottom: 3rem;
+  margin-bottom: 5rem;
+}
+
+/* ========== Team Grid ========== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+/* ========== Team Card ========== */
+.team-card {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 0.2rem solid #0c1fe9;
+  background: #000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-info {
+  padding: 0.75rem;
+  background: rgba(2, 18, 246, 0.3);
+  text-align: center;
+}
+
+.card-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+.card-position {
+  font-size: 0.85rem;
+  color: #0c8ce9;
+  margin-top: 0.25rem;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(12, 140, 233, 0.6);
+}
+
+/*===================JUNIOR==========================*/
+
+.junior-executives {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+/* ============ BASE HEX STYLES ============ */
+.container {
+  margin: 3rem auto;
+  display: grid;
+  justify-content: center;
+}
+
+.item {
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: goldenrod;
+  clip-path: polygon(50% 0, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%);
+  transform: scale(1.077);
+  transition: transform 0.3s;
+}
+.item:hover::before {
+  transform: scale(1.154);
+}
+
+.item a {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  clip-path: polygon(50% 0, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%);
+}
+
+.item img {
+  visibility: hidden;
+}
+
+/* ============ DESKTOP (≥901px) ============ */
+@media (min-width: 901px) {
+  .container {
+    grid-template-columns: repeat(7, 10rem);
+    column-gap: 1rem;
+    row-gap: 0rem; /* ≈ 0.866 × 10rem */
+  }
+
+  /* Odd rows (row 1,3,…) shift left 0.25 width */
+  #hex1,
+  #hex2,
+  #hex3,
+  #hex4,
+  #hex5,
+  #hex6,
+  #hex7,
+  #hex15,
+  #hex16,
+  #hex17,
+  #hex18,
+  #hex19,
+  #hex20,
+  #hex21 {
+    transform: translateX(-2.75rem);
+  }
+
+  /* Even rows (row 2,4,…) shift right 0.25 width */
+  #hex8,
+  #hex9,
+  #hex10,
+  #hex11,
+  #hex12,
+  #hex13,
+  #hex14,
+  #hex22,
+  #hex23,
+  #hex24,
+  #hex25,
+  #hex26,
+  #hex27 {
+    transform: translateX(2.75rem);
+  }
+}
+
+/*==============SIZING===============*/
+
+/* #hex1,
+#hex4,
+#hex7,
+#hex10,
+#hex13,
+#hex16,
+#hex19,
+#hex22,
+#hex25 {
+  width: 7rem;
+  height: 7rem;
+  position: relative;
+  top: 0.5rem;
+  left: 0.5rem;
+} */
+
+
+/* ============ TABLET (601–900px) ============ */
+@media (min-width: 601px) and (max-width: 900px) {
+  .container {
+    grid-template-columns: repeat(5, 8rem);
+    column-gap: 1rem;
+    row-gap: 0rem; /* ≈ 0.866 × 8rem */
+  }
+
+  .item {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  /* Odd rows */
+  #hex1,
+  #hex2,
+  #hex3,
+  #hex4,
+  #hex5,
+  #hex11,
+  #hex12,
+  #hex13,
+  #hex14,
+  #hex15,
+  #hex21,
+  #hex22 {
+    transform: translateX(-2.25rem);
+  }
+
+  /* Even rows */
+  #hex6,
+  #hex7,
+  #hex8,
+  #hex9,
+  #hex10,
+  #hex16,
+  #hex17,
+  #hex18,
+  #hex19,
+  #hex20,
+  #hex26,
+  #hex27 {
+    transform: translateX(2.25rem);
+  }
+}
+
+/* ============ MOBILE (≤600px) ============ */
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: repeat(3, 6rem);
+    column-gap: 0.7rem;
+    row-gap: 0rem; /* ≈ 0.866 × 7rem */
+  }
+
+  .item {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  /* Odd rows */
+  #hex1,
+  #hex2,
+  #hex3,
+  #hex7,
+  #hex8,
+  #hex9,
+  #hex13,
+  #hex14,
+  #hex15,
+  #hex19,
+  #hex20,
+  #hex21,
+  #hex25,
+  #hex26,
+  #hex27 {
+    transform: translateX(-1.6rem);
+  }
+
+  /* Even rows */
+  #hex4,
+  #hex5,
+  #hex6,
+  #hex10,
+  #hex11,
+  #hex12,
+  #hex16,
+  #hex17,
+  #hex18,
+  #hex22,
+  #hex23,
+  #hex24 {
+    transform: translateX(1.6rem);
+  }
+}
+
+/*=============================================*/
+
+/* ========== Responsive ========== */
+@media (max-width: 1100px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .team-card {
+    width: 20vw;
+  }
+   .grid-section {
+  padding: 5vw;
+}
+
+.grid-title {
+  font-size: 3rem;
+}
+}
+
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .team-card {
+    width: 160px;
+  }
+  .grid-section {
+  padding: 5vw;
+}
+.grid-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 0px;
+  margin-top: 3rem;
+}
+}
+
+/*=====================================================*/
+
+@media (max-width: 1100px) {
+  .laptopview {
+    display: none;
+  }
+  .mobileview {
+    display: block;
+  }
+}
+
+/* =========================Mobile/Tablet============== */
+@media (max-width: 748px) {
+  .logo {
+    height: 100px;
+    position: relative;
+    top: -20px;
+  }
+
+  /* Hide navbar on mobile */
+  #nav-center {
+    display: none !important;
+  }
+
+  /* ====================Hamburger and Sidebar====================*/
+
+  .hamburger {
+    display: flex !important;
+    position: absolute;
+    top: 2.5rem;
+    right: 1.5rem;
+    width: 30px;
+    height: 30px;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+    z-index: 3000;
+    background: transparent;
+    border: 0px;
+  }
+
+  .hamburger div {
+    width: 100%;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  .hamburger.active div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  .nav-center {
+    display: flex !important; /* Always defined for desktop */
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: calc(-1 * clamp(250px, 50vw, 300px));
+    width: clamp(200px, 50vw, 200px);
+    height: 100%;
+    background: rgba(0, 38, 255, 0.6);
+    border-left: 2px solid #0ff;
+    box-shadow: 0 0 10px #000dff, 0 0 20px #000dff, 0 0 40px #000dff;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 2rem;
+    gap: 4vh;
+    transition: right 0.3s ease;
+    z-index: 1050;
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+
+  .sidebar a {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, background 0.3s ease;
+  }
+
+  .sidebar a:hover {
+    color: #0c8ce9;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  /*=====================================*/
+
+  /* ================= FOOTER -mobile================= */
+
+  .footer {
+    width: 100%;
+    margin: 2vw 0vw;
+
+    /* Remove border and box-shadow */
+    border: none;
+    box-shadow: none;
+  }
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "logo logo"
+      "social social"
+      "links location";
+    gap: 2vw;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+
+    background: linear-gradient(90deg, transparent 50%, transparent 50%),
+      url("images/background_footer.png") center/cover no-repeat;
+
+    padding-bottom: 30px;
+  }
+
+  .footer-logo {
+    grid-area: logo;
+    margin-top: 40px;
+  }
+  .footer-logo img {
+    height: 75px !important;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .footer-social {
+    grid-area: social;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .footer-social h3 {
+    font-size: 3vw;
+  }
+  .footer-social ul {
+    display: flex;
+    justify-content: center;
+    gap: 8vw;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-social ul li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vw;
+    font-size: 2.5vw !important;
+    color: white;
+    text-decoration: none;
+  }
+  .footer-social ul li a img {
+    height: 6vw !important;
+    min-height: 32px;
+  }
+
+  .footer-links {
+    grid-area: links;
+    justify-self: center;
+    text-align: center;
+  }
+  .footer-location {
+    grid-area: location;
+    justify-self: center;
+    text-align: center;
+    max-width: 20vw;
+  }
+
+  .footer-links h3,
+  .footer-location h3 {
+    font-size: 3vw !important;
+    margin-bottom: 2vw;
+    max-width: 60vw !important;
+  }
+
+  .footer-links a {
+    font-size: 2.5vw !important;
+    margin: 1vw 0;
+    display: block;
+    text-align: left;
+  }
+
+  .footer-location p {
+    font-size: 2vw;
+    margin-top: 2vw;
+    max-width: 40vw;
+  }
+
+  .club-map {
+    width: 100%;
+    height: 15vw;
+    border-radius: 1vw;
+  }
+  .footer-bottom {
+    font-size: 2.1vw;
+    text-align: center;
+  }
+
+  /*===========================================*/
+}
+
+/*=====================================*/
+
+/* =============DESKTOP=============== */
+
+@media (min-width: 749px) {
+  /*====NAV , HAMBURGER,CLOSE BTN======*/
+
+  .hamburger {
+    display: none;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .nav-center {
+    display: flex;
+  }
+  /*=====================================*/
+
+  /* ================= FOOTER -DESKTOP================= */
+
+  .footer {
+    background: rgba(0, 0, 0, 0.85) url("stars.png") repeat center/cover;
+    padding: 3vw 5vw;
+    border: 0.1vw solid #00aaff;
+    border-radius: 2vw;
+    margin: 2vw 5vw;
+    box-shadow: 0 0 0.5vw #b8c6aa, 0 0 1.5vw #00aaff, 0 0 2.5vw #67c3d0;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+    gap: 3vw;
+    text-align: left;
+  }
+  .footer-logo img {
+    height: 10vw;
+    margin: 1.8vw 0 1vw;
+  }
+
+  .footer h3 {
+    margin-bottom: 1.2vw;
+    font-family: "Lexend", sans-serif;
+    font-size: 1.3vw;
+    color: #fff;
+  }
+
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 0.5vw 0;
+    font-size: 1vw;
+    transition: color 0.3s, text-shadow 0.3s;
+    padding-left: 1vw;
+  }
+
+  .footer a:hover {
+    color: #0c8ce9;
+    text-shadow: 0 0 5px #0c8ce9, 0 0 10px #0c8ce9;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 2vw;
+    font-size: 0.9vw;
+    color: #bbb;
+  }
+
+  .footer-location p {
+    font-size: 1.2vw;
+    color: #e0e0e0;
+    font-family: "Lexend", sans-serif;
+    margin-top: 1vw;
+    line-height: 1.5;
+    max-width: 14vw;
+  }
+
+  .footer-location p sup {
+    font-size: 0.6em;
+    vertical-align: super;
+    color: white;
+    font-weight: 600;
+  }
+  .footer-location {
+    max-width: 10vw;
+    aspect-ratio: 1;
+  }
+
+  .footer-social ul li a {
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+    text-decoration: none;
+    color: white;
+    font-size: 1vw;
+    transition: color 0.3s;
+  }
+
+  .footer-social ul li a img {
+    height: 1.5vw;
+    width: auto;
+  }
+
+  .club-map {
+    border-radius: 0.5vw;
+    border: 0.1vw solid #00aaff;
+    box-shadow: 0 0 0.8vw #00aaff, 0 0 1.5vw #67c3d0;
+    width: 100%;
+    height: auto;
+    background: #000;
+  }
+  .footer-bottom {
+    font-size: 1vw;
+  }
+
+  /*===========================================*/
+}
+/*=====================================*/
