@@ -1,52 +1,95 @@
+/* ================Overall Settings================== */
+/* Overall Settings */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-* {
-  background-color: #000;
-  background-image: url(stars.png);
-}
 
-body, html {
+
+body,
+html {
   font-family: "Lexend", sans-serif;
-  background: #000 url('stars.png') no-repeat center center / cover;
+  background: #000000 url("images/stars.png") repeat center/cover fixed;
   color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  overflow-x: hidden;
 }
 
-/* ================= NAVBAR ================= */
-.navbar {
+/*=====================================*/
+
+/* ===================Navbar (Desktop)======================== */
+
+nav {
+  position: relative;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding: 2vw 6vw;
+  padding-top: 1rem;
+  background: transparent;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  gap: 4rem;
+  z-index: 1000;
 }
 
 .logo {
-  height: 8vw;
+  height: auto;
+  margin-right: 15vw;
+  margin-left: 5vw;
+  padding-top: 4vh;
 }
 
-/* Desktop nav */
 .nav-center {
+  flex: 0 1 auto;
   display: flex;
-  gap: 3vw;
+  justify-content: flex-end;
+  padding-top: 3vh;
+  gap: 4vw;
+  width: 40vw;
+  margin-right: 5vw;
 }
 
 .nav-center a {
+  margin-top: 2rem;
   text-decoration: none;
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 1.5vw;
+  font-family: "Lexend", sans-serif;
   font-weight: 700;
   transition: color 0.3s;
+  white-space: nowrap;
 }
 
 .nav-center a:hover {
-  color: #0C8CE9;
+  text-decoration: underline;
 }
+
+/*=====================================*/
+
+/*==========================MAIN=================================*/
+
+/* General Section Styling */
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+/* Home Section */
+#home {
+  /* height: 100vh; */
+  padding-top: 0vh;
+}
+
+
 
 /* ================= GRID ================= */
 .grid-section {
@@ -72,6 +115,7 @@ body, html {
 .grid-item {
   aspect-ratio: 1.5/1;
   border-radius: 1.5vw;
+  width: 20vw;
   background: white;
   border: 0.2vw solid #0ff;
   box-shadow: 0 0 0.5vw #00aaff, 0 0 1.5vw #00aaff, 0 0 2.5vw #00aaff;
@@ -83,164 +127,26 @@ body, html {
   box-shadow: 0 0 1vw #0C8CE9, 0 0 2.5vw #0C8CE9, 0 0 4vw #0C8CE9;
 }
 
-/* ================= FOOTER ================= */
-
-/* (have to fix this later) */
-.footer {
-  background: rgba(0, 0, 0, 0.8);
-  background-image: url(stars.png);
-  padding: 0vw 5vw !important;
-  padding-top: 1.5vw !important;
-  border: 0.1vw solid #00aaff;
-  border-radius: 5vw;
-  margin: 2vw 5vw;
-  border-radius: 60px;
-  border: 2px solid #0ff;
-  box-shadow:
-    0 0 2px #000DFF,
-    0 0 5px #000DFF,
-    0 0 10px #000DFF,
-    0 0 20px #000DFF;
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: start;
-  gap: 3vw;
-  text-align: left;
-}
-
-.footer-logo img {
-  height: 8vw !important;
-  margin-bottom: 1vw;
-  margin-top: 1.8vw;
-  position: relative;
-  top: -3vw;
-}
-
-.footer h3 {
-  margin-bottom: 1.2vw;
-  font-family: "Lexend", sans-serif;
-  font-size: 1.3vw;
-  color: rgb(255, 255, 255);
-}
-
-.footer ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer a {
-  color: white;
-  text-decoration: none;
-  display: block;
-  margin: 0.5vw 0;
-  font-size: 1vw;
-  transition: color 0.3s;
-  padding-left: 1vw;
-}
-
-.footer a:hover {
-  color: #0C8CE9;
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 0vw;
-  font-size: 0.9vw;
-  color: #bbb;
-}
-
-.footer-location p {
-  font-size: 1.2vw;
-  color: #E0E0E0;
-  font-family: "Lexend", sans-serif;
-  margin-top: 1vw;
-  line-height: 1.5;
-  max-width: 14vw;
-}
-
-.footer-location p sup {
-  font-size: 0.6em;
-  vertical-align: super;
-  color: white;
-  font-weight: 600;
-}
-
-.footer-social ul li a {
-  display: flex;
-  align-items: center;
-  gap: 0.8vw;
-  text-decoration: none;
-  color: white;
-  font-size: 1vw;
-  transition: color 0.3s;
-}
-
-.footer-social ul li a img {
-  height: 1.5vw;
-  width: auto;
-}
-
-.footer-location img {
-  width: 1vw !important;
-
-  border-radius: 0.5vw;
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
 
 
 
-  /* (will change after the final design) */
 
-  .navbar {
-    padding: 4vw 6vw;
+
+/* =========================Mobile/Tablet============== */
+@media (max-width: 748px) {
+  .logo {
+    height: 100px;
+    position: relative;
+    top: -20px;
   }
 
-  /* Sidebar nav */
-  .nav-center {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    right: -45%; /* hidden */
-    height: 100%;
-    width: 40%;
-    background: rgba(0, 0, 0, 0.95);
-    padding: 10vw 5vw;
-    gap: 5vw;
-    transition: right 0.3s ease;
-    z-index: 1000;
+  /* Hide navbar on mobile */
+  #nav-center {
+    display: none !important;
   }
 
-  .nav-center a {
-    font-size: 3vw;
-    font-weight: 600;
-  }
-
-  .nav-center.active {
-    right: 0; /* slide in */
-  }
-
-  /* Hamburger */
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 4vw;
-    height: 3.2vw;
-    cursor: pointer;
-    z-index: 1100;
-  }
-
-  .hamburger div {
-    width: 100%;
-    height: 0.6vw;
-    background: white;
-    border-radius: 2px;
+  .grid-title{
+    font-size: 4rem;
   }
 
   /* Grid - 2 columns for mobile */
@@ -253,9 +159,334 @@ body, html {
     font-size: 2rem;
   }
 
- 
+  .grid-item{
+    width: 40vw;
+  }
 
 
+
+  /* ====================Hamburger and Sidebar====================*/
+
+  .hamburger {
+    display: flex !important;
+    position: absolute;
+    top: 2.5rem;
+    right: 1.5rem;
+    width: 30px;
+    height: 30px;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+    z-index: 3000;
+    background: transparent;
+    border: 0px;
+  }
+
+  .hamburger div {
+    width: 100%;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  .hamburger.active div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  .nav-center {
+    display: flex !important; /* Always defined for desktop */
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: calc(-1 * clamp(250px, 50vw, 300px));
+    width: clamp(200px, 50vw, 200px);
+    height: 100%;
+    background: rgba(0, 38, 255, 0.6);
+    border-left: 2px solid #0ff;
+    box-shadow: 0 0 10px #000dff, 0 0 20px #000dff, 0 0 40px #000dff;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 2rem;
+    gap: 4vh;
+    transition: right 0.3s ease;
+    z-index: 1050;
+  }
+
+  .sidebar.active {
+    right: 0;
+  }
+
+  .sidebar a {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, background 0.3s ease;
+  }
+
+  .sidebar a:hover {
+    color: #0c8ce9;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  /*=====================================*/
+
+
+
+
+  
+
+
+
+
+  /* ================= FOOTER -mobile================= */
+
+  .footer {
+    width: 100%;
+    margin: 2vw 0vw;
+
+    /* Remove border and box-shadow */
+    border: none;
+    box-shadow: none;
+  }
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "logo logo"
+      "social social"
+      "links location";
+    gap: 2vw;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+
+    background: linear-gradient(90deg, transparent 50%, transparent 50%),
+      url("images/background_footer.png") center/cover no-repeat;
+
+    padding-bottom: 30px;
+  }
+
+  .footer-logo {
+    grid-area: logo;
+    margin-top: 40px;
+  }
+  .footer-logo img {
+    height: 75px !important;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .footer-social {
+    grid-area: social;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .footer-social h3 {
+    font-size: 3vw;
+  }
+  .footer-social ul {
+    display: flex;
+    justify-content: center;
+    gap: 8vw;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-social ul li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vw;
+    font-size: 2.5vw !important;
+    color: white;
+    text-decoration: none;
+  }
+  .footer-social ul li a img {
+    height: 6vw !important;
+    min-height: 32px;
+  }
+
+  .footer-links {
+    grid-area: links;
+    justify-self: center;
+    text-align: center;
+  }
+  .footer-location {
+    grid-area: location;
+    justify-self: center;
+    text-align: center;
+    max-width: 20vw;
+  }
+
+  .footer-links h3,
+  .footer-location h3 {
+    font-size: 3vw !important;
+    margin-bottom: 2vw;
+    max-width: 60vw !important;
+  }
+
+  .footer-links a {
+    font-size: 2.5vw !important;
+    margin: 1vw 0;
+    display: block;
+    text-align: left;
+  }
+
+  .footer-location p {
+    font-size: 2vw;
+    margin-top: 2vw;
+    max-width: 40vw;
+  }
+
+  .club-map {
+    width: 100%;
+    height: 15vw;
+    border-radius: 1vw;
+  }
+  .footer-bottom {
+    font-size: 2.1vw;
+    text-align: center;
+  }
+
+  /*===========================================*/
 }
 
+/*=====================================*/
 
+/* =============DESKTOP=============== */
+
+@media (min-width: 749px) {
+  /*====NAV , HAMBURGER,CLOSE BTN======*/
+
+  .hamburger {
+    display: none;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .nav-center {
+    display: flex;
+  }
+  /*=====================================*/
+
+  /* ================= FOOTER -DESKTOP================= */
+
+  .footer {
+    background: rgba(0, 0, 0, 0.85) url("stars.png") repeat center/cover;
+    padding: 3vw 5vw;
+    border: 0.1vw solid #00aaff;
+    border-radius: 2vw;
+    margin: 2vw 5vw;
+    box-shadow: 0 0 0.5vw #b8c6aa, 0 0 1.5vw #00aaff, 0 0 2.5vw #67c3d0;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+    gap: 3vw;
+    text-align: left;
+  }
+  .footer-logo img {
+    height: 10vw;
+    margin: 1.8vw 0 1vw;
+  }
+
+  .footer h3 {
+    margin-bottom: 1.2vw;
+    font-family: "Lexend", sans-serif;
+    font-size: 1.3vw;
+    color: #fff;
+  }
+
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 0.5vw 0;
+    font-size: 1vw;
+    transition: color 0.3s, text-shadow 0.3s;
+    padding-left: 1vw;
+  }
+
+  .footer a:hover {
+    color: #0c8ce9;
+    text-shadow: 0 0 5px #0c8ce9, 0 0 10px #0c8ce9;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 2vw;
+    font-size: 0.9vw;
+    color: #bbb;
+  }
+
+  .footer-location p {
+    font-size: 1.2vw;
+    color: #e0e0e0;
+    font-family: "Lexend", sans-serif;
+    margin-top: 1vw;
+    line-height: 1.5;
+    max-width: 14vw;
+  }
+
+  .footer-location p sup {
+    font-size: 0.6em;
+    vertical-align: super;
+    color: white;
+    font-weight: 600;
+  }
+  .footer-location {
+    max-width: 10vw;
+    aspect-ratio: 1;
+  }
+
+  .footer-social ul li a {
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+    text-decoration: none;
+    color: white;
+    font-size: 1vw;
+    transition: color 0.3s;
+  }
+
+  .footer-social ul li a img {
+    height: 1.5vw;
+    width: auto;
+  }
+
+  .club-map {
+    border-radius: 0.5vw;
+    border: 0.1vw solid #00aaff;
+    box-shadow: 0 0 0.8vw #00aaff, 0 0 1.5vw #67c3d0;
+    width: 100%;
+    height: auto;
+    background: #000;
+  }
+  .footer-bottom {
+    font-size: 1vw;
+  }
+
+  /*===========================================*/
+}
+/*=====================================*/
