@@ -74,7 +74,6 @@ nav {
   position: relative;
   width: 50%;
   color: transparent;
-  border: 2px solid red;
   height: 350px;
   position: relative;
   animation: movedown 1s linear forwards;
@@ -188,6 +187,7 @@ p{
   border-bottom: 15px solid transparent;
   border-left: 15px solid white;
   right: 107px;
+  display: none;
 }
 .right-box{
   left: 120px;
@@ -202,28 +202,32 @@ p{
   border-bottom: 15px solid transparent;
   border-right: 15px solid white;
   left: 107px;
+  display: none;
 }
 
 @media screen and (max-width: 600px){
   h1{
-    font-size: 40px;
+    font-size: 24px;
   }
   .right-container-arrow,.left-container-arrow{
     display: none;
   }
   .text-box{
-  position: relative;
-  width: 70%;
-  font-size: 11px;
-  left: 0px;
-  top: 50px;
+  position: absolute;
+  width: 154px;
+  font-size: 15px;
+  font-weight: bold;
+  left: 10%;
+  top: 60%;
+  
 }
 .text-box.text-box-right {
-   position: relative;
-  width: 70%;
-   font-size: 11px;
-  left: 0px;
-  top: 0px;
+  position: absolute;
+  width: 154px;
+  font-size: 15px;
+  font-weight: bold;
+  left: 10%;
+  top: 60%;
 
 }
  .box{
@@ -244,9 +248,13 @@ p{
  }
  .left-container{
   left: auto;
+  width: 100%;
+  height: 30vh;
 }
 .right-container{
   left: auto;
+  width: 100%;
+  height: 30vh;
 }
 .timeline::after{
   content: '';
@@ -254,33 +262,36 @@ p{
   width: 4px;
   height: 100%;
   top: 0;
-  left: 60%;
+  left: 243px;
   z-index: 5;
   background: #80CAFF;
   animation: moveline 5.8s linear forwards;
 
 }
+
+.size{
+  width: 100px;
+  position: absolute;
+  left: 250px;
+  top: -100px;
+  margin-right: 20px;
+}
 h2{
   font-size: 20px;
   position: absolute;
 }
-.size{
-  width: 50px;
+
+.box{
   position: absolute;
-  right: 10%;
-  top: -20%;
-  background-color: aqua;
-  margin-right: 20px;
+  top: 10%;
 }
-.size2{
-  width: 50px;
-  position: absolute;
-  right: 10%;
-  top: -20%;
-  background-color: aqua;
-  margin-right: 20px;
+small
+{
+  position: relative;
+  top : 20px;
+  font-size: 10px;
+  align-self: center;
+  left: 10px;
 }
-.container{
-  width: 100%;
-}
+
 }
