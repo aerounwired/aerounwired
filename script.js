@@ -44,15 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
 // =======================MAIN=======================================
-
-
-
-
-
-
-      document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const eventData = [
     { name: "Computational Fluid Dynamics", image: "competitions/fluid_dynamics.png" },
     { name: "ICARUS", image: "competitions/icarus.png" },
@@ -61,13 +54,12 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Aircraft-Design Workshop", image: "competitions/aircraft.png" }
   ];
 
-  const n = 5; // Total number of cards
-
   const track = document.getElementById("cards-track");
   const prevBtn = document.getElementById("carousel-prev");
   const nextBtn = document.getElementById("carousel-next");
   const dotsContainer = document.getElementById("carousel-dots");
 
+  // Insert cards
   track.innerHTML = eventData
     .map(
       (d) => `
@@ -85,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let direction = 0;
   let lastVisibleIndices = new Set();
 
+  // Create dots
   dotsContainer.innerHTML = "";
   eventData.forEach((_, i) => {
     const dot = document.createElement("span");
@@ -92,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (i === 0) dot.classList.add("active");
     dot.addEventListener("click", () => {
       index = i;
-      direction = 0; // No animation for dot click
+      direction = 0;
       render();
     });
     dotsContainer.appendChild(dot);
@@ -105,20 +98,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getConfig() {
-    const isMobile = window.innerWidth < 768; // Adjust breakpoint as needed
-    
+    const isMobile = window.innerWidth < 768;
     return {
       isMobile,
       visibleCount: isMobile ? 3 : 5,
-      gap: isMobile ? 45 : 45, // Smaller gap on mobile
-      maxScale: isMobile ? 1.6 : 1.3 // Less scaling on mobile
+      gap: 45,
+      maxScale: isMobile ? 1.6 : 1.3
     };
   }
 
   function render() {
+    if (cards.length === 0) return;
+
     const cardWidth = cards[0].offsetWidth;
     const config = getConfig();
-    const step = (cardWidth * 1.05) + config.gap; // To prevent overlap with scaling
+    const step = (cardWidth * 1.05) + config.gap;
     const half = Math.floor(config.visibleCount / 2);
 
     const positions = [];
@@ -137,7 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
       card.style.top = "50%";
       card.style.transformOrigin = "center center";
       card.style.zIndex = "0";
-      // Note: No opacity reset here
     });
 
     if (direction !== 0) {
@@ -162,18 +155,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let shiftX = offset * step;
       let scale = offset === 0 ? config.maxScale : 1.0;
-      let opacity = 1;
 
-      card.style.opacity = opacity.toString();
+      card.style.opacity = "1";
       card.style.zIndex = String(5 - Math.abs(offset));
       card.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
     });
 
-    // Handle non-visible, non-outgoing cards (set opacity 0 without transition)
     const activeIndices =
       direction !== 0
         ? new Set([...currentVisibleIndices, ...lastVisibleIndices])
         : currentVisibleIndices;
+
     cards.forEach((card, cardIdx) => {
       if (!activeIndices.has(cardIdx)) {
         card.style.transition = "0s";
@@ -182,67 +174,68 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     lastVisibleIndices = currentVisibleIndices;
-    direction = 0; // Reset direction after setting styles
+    direction = 0;
 
     updateDots();
   }
 
-  window.addEventListener("resize", () => {
-    direction = 0; // No animation on resize
-    render();
-  });
-
   function next() {
-  const newIndex = (index + 1 + total) % total;
-  direction = -1; // Moving cards left
+    const newIndex = (index + 1 + total) % total;
+    direction = -1;
 
-  // Prepare incoming card (from right)
-  const config = getConfig();
-  const half = Math.floor(config.visibleCount / 2);
-  const step = (cards[0].offsetWidth * 1.05) + config.gap; // Match render calc
+    const config = getConfig();
+    const half = Math.floor(config.visibleCount / 2);
+    const step = (cards[0].offsetWidth * 1.05) + config.gap;
 
-  const incomingOffset = half + 1;
-  const incomingCardIndex = (newIndex + half + total) % total;
-  const incomingCard = cards[incomingCardIndex];
+    const incomingOffset = half + 1;
+    const incomingCardIndex = (newIndex + half + total) % total;
+    const incomingCard = cards[incomingCardIndex];
 
-  incomingCard.style.transition = "0s";
-  let shiftX = incomingOffset * step;
-  let scale = 1.0;
-  incomingCard.style.opacity = "0"; // Fade in during slide
-  incomingCard.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
+    incomingCard.style.transition = "0s";
+    let shiftX = incomingOffset * step;
+    incomingCard.style.opacity = "0";
+    incomingCard.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(1.0)`;
 
-  index = newIndex;
-  render();
-}
+    index = newIndex;
+    render();
+  }
 
   function prev() {
-  const newIndex = (index - 1 + total) % total;
-  direction = 1; // Moving cards right
+    const newIndex = (index - 1 + total) % total;
+    direction = 1;
 
-  // Prepare incoming card (from left)
-  const config = getConfig();
-  const half = Math.floor(config.visibleCount / 2);
-  const step = (cards[0].offsetWidth * 1.05) + config.gap; // Match render calc
+    const config = getConfig();
+    const half = Math.floor(config.visibleCount / 2);
+    const step = (cards[0].offsetWidth * 1.05) + config.gap;
 
-  const incomingOffset = -half - 1;
-  const incomingCardIndex = (newIndex + (-half) + total) % total;
-  const incomingCard = cards[incomingCardIndex];
+    const incomingOffset = -half - 1;
+    const incomingCardIndex = (newIndex + (-half) + total) % total;
+    const incomingCard = cards[incomingCardIndex];
 
-  incomingCard.style.transition = "0s";
-  let shiftX = incomingOffset * step;
-  let scale = 1.0;
-  incomingCard.style.opacity = "0"; // Fade in during slide
-  incomingCard.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
+    incomingCard.style.transition = "0s";
+    let shiftX = incomingOffset * step;
+    incomingCard.style.opacity = "0";
+    incomingCard.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(1.0)`;
 
-  index = newIndex;
-  render();
-}
+    index = newIndex;
+    render();
+  }
 
   prevBtn.addEventListener("click", prev);
   nextBtn.addEventListener("click", next);
 
+  // Initial render
   render();
+
+  // Ensure everything recalculates properly after all assets load
+  window.addEventListener("load", () => {
+    render();
+  });
+
+  // Also re-render on resize
+  window.addEventListener("resize", () => {
+    direction = 0;
+    render();
+  });
 });
-
-
 //=======================================================================================
