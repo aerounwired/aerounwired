@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return {
       isMobile,
       visibleCount: isMobile ? 3 : 5,
-      gap: isMobile ? 45: 75,
+      gap: isMobile ? 45 : 75,
       maxScale: isMobile ? 1.6 : 1.6
     };
   }
@@ -103,26 +103,24 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-   positions.forEach((offset) => {
-  const cardIndex = (index + offset + total) % total;
-  const card = cards[cardIndex];
+    positions.forEach((offset) => {
+      const cardIndex = (index + offset + total) % total;
+      const card = cards[cardIndex];
 
-  let scale = offset === 0 ? config.maxScale : 1.0;
+      let scale = offset === 0 ? config.maxScale : 1.0;
 
-  // Add extra spacing near the active card
-  let extraGap = 0;
-  if (Math.abs(offset) === 1) {
-    extraGap = config.gap * 0.5; // tweak multiplier (0.3–0.7) until it looks good
-    extraGap *= offset; // left vs right direction
-  }
+      let extraGap = 0;
+      if (Math.abs(offset) === 1) {
+        extraGap = config.gap * 0.5;
+        extraGap *= offset;
+      }
 
-  let shiftX = (offset * step) + extraGap;
+      let shiftX = (offset * step) + extraGap;
 
-  card.style.opacity = "1";
-  card.style.zIndex = String(5 - Math.abs(offset));
-  card.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
-});
-
+      card.style.opacity = "1";
+      card.style.zIndex = String(5 - Math.abs(offset));
+      card.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
+    });
 
     const activeIndices =
       direction !== 0
@@ -200,20 +198,53 @@ document.addEventListener("DOMContentLoaded", () => {
     direction = 0;
     render();
   });
+
+  // =======================SWIPE SUPPORT=======================================
+  let startX = 0;
+  let isDragging = false;
+
+  track.addEventListener("mousedown", dragStart);
+  track.addEventListener("touchstart", dragStart);
+
+  track.addEventListener("mousemove", dragMove);
+  track.addEventListener("touchmove", dragMove);
+
+  track.addEventListener("mouseup", dragEnd);
+  track.addEventListener("mouseleave", dragEnd);
+  track.addEventListener("touchend", dragEnd);
+
+  function dragStart(e) {
+    isDragging = true;
+    startX = e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
+    e.preventDefault();
+  }
+
+  function dragMove(e) {
+    if (!isDragging) return;
+    // Optional: add visual feedback while dragging
+  }
+
+  function dragEnd(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    const endX = e.type === "touchend" ? e.changedTouches[0].clientX : e.clientX;
+    const diffX = endX - startX;
+
+    const threshold = 50; // Minimum swipe distance
+
+    if (diffX > threshold) {
+      prev();
+    } else if (diffX < -threshold) {
+      next();
+    }
+  }
 });
 //=======================================================================================
 
-
-
-
-
-
-
-
+// =======================SIDEBAR/HAMBURGER=======================================
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
   const sidebar = document.getElementById("sidebar");
-
 
   const toggleSidebar = (e) => {
     e.stopPropagation();
@@ -237,4 +268,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
