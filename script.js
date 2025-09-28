@@ -42,8 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
 //======================================================================
 
 
-
-
 // =======================MAIN=======================================
 document.addEventListener("DOMContentLoaded", () => {
   const eventData = [
@@ -102,8 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return {
       isMobile,
       visibleCount: isMobile ? 3 : 5,
-      gap: 45,
-      maxScale: isMobile ? 1.6 : 1.3
+      gap: isMobile ? 45 : 75,
+      maxScale: 1.6
     };
   }
 
@@ -153,8 +151,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const cardIndex = (index + offset + total) % total;
       const card = cards[cardIndex];
 
-      let shiftX = offset * step;
       let scale = offset === 0 ? config.maxScale : 1.0;
+
+      let extraGap = 0;
+      if (Math.abs(offset) === 1) {
+        extraGap = config.gap * 0.5;
+        extraGap *= offset;
+      }
+
+      let shiftX = (offset * step) + extraGap;
 
       card.style.opacity = "1";
       card.style.zIndex = String(5 - Math.abs(offset));
@@ -227,16 +232,63 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial render
   render();
 
-  // Ensure everything recalculates properly after all assets load
-  window.addEventListener("load", () => {
-    render();
-  });
-
-  // Also re-render on resize
+  window.addEventListener("load", render);
   window.addEventListener("resize", () => {
     direction = 0;
     render();
   });
+
+  // =======================SWIPE SUPPORT=======================================
+  let startX = 0;
+  let startY = 0;
+  let isDragging = false;
+
+  track.addEventListener("mousedown", dragStart);
+  track.addEventListener("touchstart", dragStart, { passive: true });
+
+  track.addEventListener("mousemove", dragMove);
+  track.addEventListener("touchmove", dragMove, { passive: false });
+
+  track.addEventListener("mouseup", dragEnd);
+  track.addEventListener("mouseleave", dragEnd);
+  track.addEventListener("touchend", dragEnd);
+
+  function dragStart(e) {
+    isDragging = true;
+    startX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
+    startY = e.type.includes("touch") ? e.touches[0].clientY : e.clientY;
+  }
+
+  function dragMove(e) {
+    if (!isDragging) return;
+
+    const currentX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
+    const currentY = e.type.includes("touch") ? e.touches[0].clientY : e.clientY;
+
+    const diffX = currentX - startX;
+    const diffY = currentY - startY;
+
+    // Only prevent vertical scroll if horizontal swipe is dominant
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      e.preventDefault();
+    }
+  }
+
+  function dragEnd(e) {
+    if (!isDragging) return;
+    isDragging = false;
+
+    const endX = e.type === "touchend" ? e.changedTouches[0].clientX : e.clientX;
+    const diffX = endX - startX;
+
+    const threshold = 50; // Minimum swipe distance
+
+    if (diffX > threshold) {
+      prev();
+    } else if (diffX < -threshold) {
+      next();
+    }
+  }
 });
 //=======================================================================================
 
@@ -254,38 +306,80 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-
-
-
 // ===============================================
 
+ const sponsors = [
+      { name: "Google", logo: "images/gmail_logo.png" },
+      { name: "Microsoft", logo: "images/gmail_logo.png" },
+      { name: "Amazon", logo: "images/gmail_logo.png" },
+      { name: "OpenAI", logo: "images/gmail_logo.png" }
+    ];
 
+    const sponsorsTrack = document.getElementById("sponsorsTrack");
+    const sponsorWidth = window.innerWidth <= 600 ? 80 : 140; // Logo width + margins (60px + 2*10px or 100px + 2*20px)
+    const containerWidth = document.querySelector(".sponsors-container").offsetWidth;
+    const visibleLogos = Math.ceil(containerWidth / sponsorWidth) + 1; // Enough logos to fill container + 1
+    const totalLogos = sponsors.length * Math.ceil(visibleLogos / sponsors.length + 1); // Duplicate enough times
+    const trackWidth = totalLogos * sponsorWidth;
 
+    // Set animation duration based on track width for consistent speed
+    const pixelsPerSecond = 50; // Adjust for desired speed
+    const animationDuration = trackWidth / pixelsPerSecond;
 
-// Example sponsor details
-const sponsors = [
-  { name: "Google", logo: "images/google.png" },
-  { name: "Microsoft", logo: "images/microsoft.png" },
-  { name: "Amazon", logo: "images/amazon.png" },
-  { name: "OpenAI", logo: "images/openai.png" }
-];
+    // Set track width and animation
+    sponsorsTrack.style.width = `${trackWidth}px`;
+    sponsorsTrack.style.animationDuration = `${animationDuration}s`;
 
-const sponsorsTrack = document.getElementById("sponsorsTrack");
+    // Create sponsor element
+    function createSponsorDiv(sponsor) {
+      const div = document.createElement("div");
+      div.classList.add("sponsor");
+      const img = document.createElement("img");
+      img.src = sponsor.logo;
+      img.alt = sponsor.name;
+      img.title = sponsor.name;
+      img.onerror = () => {
+        img.src = "images/fallback.png";
+        img.alt = "Sponsor logo unavailable";
+      };
+      div.appendChild(img);
+      return div;
+    }
 
-// Add sponsors dynamically
-sponsors.forEach(sponsor => {
-  const sponsorDiv = document.createElement("div");
-  sponsorDiv.classList.add("sponsor");
-  sponsorDiv.innerHTML = `<img src="${sponsor.logo}" alt="${sponsor.name}" title="${sponsor.name}">`;
-  sponsorsTrack.appendChild(sponsorDiv);
-});
+    // Add sponsors multiple times for seamless scroll
+    for (let i = 0; i < totalLogos; i++) {
+      const sponsor = sponsors[i % sponsors.length];
+      sponsorsTrack.appendChild(createSponsorDiv(sponsor));
+    }
 
-// Duplicate track content to make smooth infinite scroll
-sponsors.forEach(sponsor => {
-  const sponsorDiv = document.createElement("div");
-  sponsorDiv.classList.add("sponsor");
-  sponsorDiv.innerHTML = `<img src="${sponsor.logo}" alt="${sponsor.name}" title="${sponsor.name}">`;
-  sponsorsTrack.appendChild(sponsorDiv);
-});
+    // Dynamically adjust on resize
+    window.addEventListener("resize", () => {
+      const newContainerWidth = document.querySelector(".sponsors-container").offsetWidth;
+      const newSponsorWidth = window.innerWidth <= 600 ? 80 : 140;
+      const newVisibleLogos = Math.ceil(newContainerWidth / newSponsorWidth) + 1;
+      const newTotalLogos = sponsors.length * Math.ceil(newVisibleLogos / sponsors.length + 1);
+      const newTrackWidth = newTotalLogos * newSponsorWidth;
+      const newAnimationDuration = newTrackWidth / pixelsPerSecond;
+
+      sponsorsTrack.innerHTML = "";
+      sponsorsTrack.style.width = `${newTrackWidth}px`;
+      sponsorsTrack.style.animationDuration = `${newAnimationDuration}s`;
+      for (let i = 0; i < newTotalLogos; i++) {
+        const sponsor = sponsors[i % sponsors.length];
+        sponsorsTrack.appendChild(createSponsorDiv(sponsor));
+      }
+    });
+
+    // Define keyframes dynamically
+    const styleSheet = document.createElement("style");
+    styleSheet.textContent = `
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-${trackWidth}px);
+        }
+      }
+    `;
+    document.head.appendChild(styleSheet);
