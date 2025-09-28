@@ -238,58 +238,39 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   });
 
-  // =======================SWIPE SUPPORT=======================================
-  let startX = 0;
-  let startY = 0;
-  let isDragging = false;
+// =======================SWIPE SUPPORT=======================================
+let startX = 0;
+let startY = 0;
+let isDragging = false;
 
-  track.addEventListener("mousedown", dragStart);
-  track.addEventListener("touchstart", dragStart, { passive: true });
+track.addEventListener("touchstart", dragStart, { passive: true });
+track.addEventListener("touchend", dragEnd);
 
-  track.addEventListener("mousemove", dragMove);
-  track.addEventListener("touchmove", dragMove, { passive: false });
+function dragStart(e) {
+  isDragging = true;
+  startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY;
+}
 
-  track.addEventListener("mouseup", dragEnd);
-  track.addEventListener("mouseleave", dragEnd);
-  track.addEventListener("touchend", dragEnd);
+function dragEnd(e) {
+  if (!isDragging) return;
+  isDragging = false;
 
-  function dragStart(e) {
-    isDragging = true;
-    startX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
-    startY = e.type.includes("touch") ? e.touches[0].clientY : e.clientY;
+  const endX = e.changedTouches[0].clientX;
+  const endY = e.changedTouches[0].clientY;
+
+  const diffX = endX - startX;
+  const diffY = endY - startY;
+
+  const threshold = 50; // Minimum swipe distance
+
+  // Only trigger carousel if horizontal swipe is dominant
+  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
+    if (diffX > 0) prev();
+    else next();
   }
+}
 
-  function dragMove(e) {
-    if (!isDragging) return;
-
-    const currentX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
-    const currentY = e.type.includes("touch") ? e.touches[0].clientY : e.clientY;
-
-    const diffX = currentX - startX;
-    const diffY = currentY - startY;
-
-    // Only prevent vertical scroll if horizontal swipe is dominant
-    if (Math.abs(diffX) > Math.abs(diffY)) {
-      e.preventDefault();
-    }
-  }
-
-  function dragEnd(e) {
-    if (!isDragging) return;
-    isDragging = false;
-
-    const endX = e.type === "touchend" ? e.changedTouches[0].clientX : e.clientX;
-    const diffX = endX - startX;
-
-    const threshold = 50; // Minimum swipe distance
-
-    if (diffX > threshold) {
-      prev();
-    } else if (diffX < -threshold) {
-      next();
-    }
-  }
-});
 //=======================================================================================
 
 
