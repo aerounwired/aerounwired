@@ -373,78 +373,79 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ===============================================
 
- const sponsors = [
-      { name: "Google", logo: "images/gmail_logo.png" },
-      { name: "Microsoft", logo: "images/gmail_logo.png" },
-      { name: "Amazon", logo: "images/gmail_logo.png" },
-      { name: "OpenAI", logo: "images/gmail_logo.png" }
-    ];
 
-    const sponsorsTrack = document.getElementById("sponsorsTrack");
-    const sponsorWidth = window.innerWidth <= 600 ? 80 : 140; // Logo width + margins (60px + 2*10px or 100px + 2*20px)
-    const containerWidth = document.querySelector(".sponsors-container").offsetWidth;
-    const visibleLogos = Math.ceil(containerWidth / sponsorWidth) + 1; // Enough logos to fill container + 1
-    const totalLogos = sponsors.length * Math.ceil(visibleLogos / sponsors.length + 1); // Duplicate enough times
-    const trackWidth = totalLogos * sponsorWidth;
 
-    // Set animation duration based on track width for consistent speed
-    const pixelsPerSecond = 50; // Adjust for desired speed
-    const animationDuration = trackWidth / pixelsPerSecond;
 
-    // Set track width and animation
-    sponsorsTrack.style.width = `${trackWidth}px`;
-    sponsorsTrack.style.animationDuration = `${animationDuration}s`;
 
-    // Create sponsor element
-    function createSponsorDiv(sponsor) {
-      const div = document.createElement("div");
-      div.classList.add("sponsor");
-      const img = document.createElement("img");
-      img.src = sponsor.logo;
-      img.alt = sponsor.name;
-      img.title = sponsor.name;
-      img.onerror = () => {
-        img.src = "images/fallback.png";
-        img.alt = "Sponsor logo unavailable";
-      };
-      div.appendChild(img);
-      return div;
+const sponsors = [
+  { name: "Google", logo: "images/gmail_logo.png" },
+  { name: "Microsoft", logo: "images/gmail_logo.png" },
+  { name: "Amazon", logo: "images/gmail_logo.png" },
+  { name: "OpenAI", logo: "images/gmail_logo.png" }
+];
+
+const track = document.getElementById("sponsorsTrack");
+let speed = window.innerWidth <= 600 ? 0.5 : 1; 
+
+let sponsorElements = [];
+
+// Create sponsor div
+function createSponsorDiv(sponsor) {
+  const div = document.createElement("div");
+  div.classList.add("sponsor");
+  const img = document.createElement("img");
+  img.src = sponsor.logo;
+  img.alt = sponsor.name;
+  img.onerror = () => {
+    img.src = "images/fallback.png";
+    img.alt = "Sponsor logo unavailable";
+  };
+  div.appendChild(img);
+  return div;
+}
+
+// Populate the track with multiple repeats
+function initTrack() {
+  track.innerHTML = "";
+  sponsorElements = [];
+  
+  // Repeat sponsors 10 times for smooth loop
+  for (let i = 0; i < 10; i++) {
+    for (let sponsor of sponsors) {
+      const div = createSponsorDiv(sponsor);
+      track.appendChild(div);
+      sponsorElements.push(div);
     }
+  }
+}
 
-    // Add sponsors multiple times for seamless scroll
-    for (let i = 0; i < totalLogos; i++) {
-      const sponsor = sponsors[i % sponsors.length];
-      sponsorsTrack.appendChild(createSponsorDiv(sponsor));
-    }
+initTrack();
 
-    // Dynamically adjust on resize
-    window.addEventListener("resize", () => {
-      const newContainerWidth = document.querySelector(".sponsors-container").offsetWidth;
-      const newSponsorWidth = window.innerWidth <= 600 ? 80 : 140;
-      const newVisibleLogos = Math.ceil(newContainerWidth / newSponsorWidth) + 1;
-      const newTotalLogos = sponsors.length * Math.ceil(newVisibleLogos / sponsors.length + 1);
-      const newTrackWidth = newTotalLogos * newSponsorWidth;
-      const newAnimationDuration = newTrackWidth / pixelsPerSecond;
+let trackOffset = 0;
 
-      sponsorsTrack.innerHTML = "";
-      sponsorsTrack.style.width = `${newTrackWidth}px`;
-      sponsorsTrack.style.animationDuration = `${newAnimationDuration}s`;
-      for (let i = 0; i < newTotalLogos; i++) {
-        const sponsor = sponsors[i % sponsors.length];
-        sponsorsTrack.appendChild(createSponsorDiv(sponsor));
-      }
-    });
+function animate() {
+  trackOffset -= speed; // move left
+  track.style.transform = `translateX(${trackOffset}px)`;
 
-    // Define keyframes dynamically
-    const styleSheet = document.createElement("style");
-    styleSheet.textContent = `
-      @keyframes scroll-left {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-${trackWidth}px);
-        }
-      }
-    `;
-    document.head.appendChild(styleSheet);
+  // Check if first element is completely out of view
+  const first = sponsorElements[0];
+  const firstWidth = first.offsetWidth + parseInt(getComputedStyle(first).marginLeft) + parseInt(getComputedStyle(first).marginRight);
+
+  if (-trackOffset >= firstWidth) {
+    // Dequeue first and enqueue at the end
+    trackOffset += firstWidth; // adjust offset
+    track.appendChild(first);
+    sponsorElements.push(sponsorElements.shift());
+  }
+
+  requestAnimationFrame(animate);
+}
+
+// Start animation
+animate();
+
+// Optional: Re-init on resize
+window.addEventListener("resize", () => {
+  initTrack();
+  trackOffset = 0;
+});
