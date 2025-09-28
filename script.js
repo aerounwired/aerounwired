@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // =======================MAIN=======================================
+// =======================MAIN=======================================
 document.addEventListener("DOMContentLoaded", () => {
   const eventData = [
     { name: "Computational Fluid Dynamics", image: "competitions/fluid_dynamics.png" },
@@ -237,52 +238,59 @@ document.addEventListener("DOMContentLoaded", () => {
     direction = 0;
     render();
   });
+});
 
 // =======================SWIPE SUPPORT=======================================
 let startX = 0;
 let startY = 0;
 let isDragging = false;
-let hasMoved = false;
+let movedX = 0;
+let movedY = 0;
 
-track.addEventListener("touchstart", (e) => {
+track.addEventListener("touchstart", dragStart, { passive: true });
+track.addEventListener("touchmove", dragMove, { passive: false });
+track.addEventListener("touchend", dragEnd);
+
+function dragStart(e) {
   isDragging = true;
-  hasMoved = false;
   startX = e.touches[0].clientX;
   startY = e.touches[0].clientY;
-}, { passive: true });
+  movedX = 0;
+  movedY = 0;
+}
 
-track.addEventListener("touchmove", (e) => {
+function dragMove(e) {
   if (!isDragging) return;
 
-  const currentX = e.touches[0].clientX;
-  const currentY = e.touches[0].clientY;
+  movedX = e.touches[0].clientX - startX;
+  movedY = e.touches[0].clientY - startY;
 
-  const diffX = currentX - startX;
-  const diffY = currentY - startY;
-
-  // Only consider horizontal movement if diffX > diffY
-  if (Math.abs(diffX) > Math.abs(diffY)) {
-    hasMoved = true; // mark that user swiped horizontally
+  // If horizontal movement is dominant, prevent default vertical scrolling
+  if (Math.abs(movedX) > Math.abs(movedY)) {
+    e.preventDefault();
   }
-  // Do NOT prevent default – let the page scroll naturally
-}, { passive: true });
+}
 
-track.addEventListener("touchend", (e) => {
+function dragEnd(e) {
   if (!isDragging) return;
   isDragging = false;
 
-  if (!hasMoved) return; // ignore small vertical scrolls
-
   const endX = e.changedTouches[0].clientX;
-  const diffX = endX - startX;
-  const threshold = 50;
+  const endY = e.changedTouches[0].clientY;
 
-  if (Math.abs(diffX) > threshold) {
+  const diffX = endX - startX;
+  const diffY = endY - startY;
+
+  const threshold = 50; // Minimum swipe distance
+
+  // Only trigger carousel if horizontal swipe is dominant
+  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
     if (diffX > 0) prev();
     else next();
   }
-});
+}
 
+//=======================================================================================
 //=======================================================================================
 
 
