@@ -1,4 +1,8 @@
 // =======================MAIN=======================================
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const eventData = [
     { name: "Computational Fluid Dynamics", image: "competitions/fluid_dynamics.png" },
@@ -201,44 +205,106 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // =======================SWIPE SUPPORT=======================================
   let startX = 0;
+  let startY = 0;
   let isDragging = false;
+  let movedX = 0;
+  let movedY = 0;
 
-  track.addEventListener("mousedown", dragStart);
-  track.addEventListener("touchstart", dragStart);
+  // Ensure track exists before binding events
+  if (!track) {
+    console.error("Carousel track element not found. Ensure #cards-track exists in the DOM.");
+    return;
+  }
 
-  track.addEventListener("mousemove", dragMove);
-  track.addEventListener("touchmove", dragMove);
+  function bindTouchEvents() {
+    // Remove existing listeners to prevent duplicates
+    track.removeEventListener("touchstart", dragStart);
+    track.removeEventListener("touchmove", dragMove);
+    track.removeEventListener("touchend", dragEnd);
+    track.removeEventListener("mousedown", dragStart);
+    track.removeEventListener("mousemove", dragMove);
+    track.removeEventListener("mouseup", dragEnd);
+    track.removeEventListener("mouseleave", dragEnd);
 
-  track.addEventListener("mouseup", dragEnd);
-  track.addEventListener("mouseleave", dragEnd);
-  track.addEventListener("touchend", dragEnd);
+    // Add touch and mouse event listeners
+    track.addEventListener("touchstart", dragStart, { passive: true });
+    track.addEventListener("touchmove", dragMove, { passive: false });
+    track.addEventListener("touchend", dragEnd, { passive: true });
+    track.addEventListener("mousedown", dragStart, { passive: true });
+    track.addEventListener("mousemove", dragMove, { passive: false });
+    track.addEventListener("mouseup", dragEnd, { passive: true });
+    track.addEventListener("mouseleave", dragEnd, { passive: true });
+  }
 
   function dragStart(e) {
+    if (!track.contains(e.target)) return; // Ignore events outside track
     isDragging = true;
     startX = e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
-    e.preventDefault();
+    startY = e.type === "touchstart" ? e.touches[0].clientY : e.clientY;
+    movedX = 0;
+    movedY = 0;
+    console.debug("Drag start:", startX, startY); // Debug log
   }
 
   function dragMove(e) {
     if (!isDragging) return;
-    // Optional: add visual feedback while dragging
+
+    movedX = (e.type === "touchmove" ? e.touches[0].clientX : e.clientX) - startX;
+    movedY = (e.type === "touchmove" ? e.touches[0].clientY : e.clientY) - startY;
+
+    // If horizontal movement is dominant, prevent default scrolling
+    if (Math.abs(movedX) > Math.abs(movedY) && Math.abs(movedX) > 10) {
+      e.preventDefault();
+      console.debug("Horizontal swipe detected:", movedX, movedY); // Debug log
+    }
   }
 
   function dragEnd(e) {
     if (!isDragging) return;
     isDragging = false;
-    const endX = e.type === "touchend" ? e.changedTouches[0].clientX : e.clientX;
-    const diffX = endX - startX;
 
+    const endX = e.type === "touchend" ? e.changedTouches[0].clientX : e.clientX;
+    const endY = e.type === "touchend" ? e.changedTouches[0].clientY : e.clientY;
+    const diffX = endX - startX;
+    const diffY = endY - startY;
     const threshold = 50; // Minimum swipe distance
 
-    if (diffX > threshold) {
-      prev();
-    } else if (diffX < -threshold) {
-      next();
+    console.debug("Drag end:", diffX, diffY); // Debug log
+
+    // Trigger carousel navigation only if horizontal swipe is dominant
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
+      if (diffX > 0) {
+        console.debug("Swipe right -> prev");
+        prev();
+      } else {
+        console.debug("Swipe left -> next");
+        next();
+      }
     }
   }
+
+  // Bind events initially
+  bindTouchEvents();
+
+  // Rebind events on resize to handle layout changes
+  window.addEventListener("resize", bindTouchEvents);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //=======================================================================================
 
 // =======================SIDEBAR/HAMBURGER=======================================
