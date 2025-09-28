@@ -242,34 +242,46 @@ document.addEventListener("DOMContentLoaded", () => {
 let startX = 0;
 let startY = 0;
 let isDragging = false;
+let hasMoved = false;
 
-track.addEventListener("touchstart", dragStart, { passive: true });
-track.addEventListener("touchend", dragEnd);
-
-function dragStart(e) {
+track.addEventListener("touchstart", (e) => {
   isDragging = true;
+  hasMoved = false;
   startX = e.touches[0].clientX;
   startY = e.touches[0].clientY;
-}
+}, { passive: true });
 
-function dragEnd(e) {
+track.addEventListener("touchmove", (e) => {
+  if (!isDragging) return;
+
+  const currentX = e.touches[0].clientX;
+  const currentY = e.touches[0].clientY;
+
+  const diffX = currentX - startX;
+  const diffY = currentY - startY;
+
+  // Only consider horizontal movement if diffX > diffY
+  if (Math.abs(diffX) > Math.abs(diffY)) {
+    hasMoved = true; // mark that user swiped horizontally
+  }
+  // Do NOT prevent default – let the page scroll naturally
+}, { passive: true });
+
+track.addEventListener("touchend", (e) => {
   if (!isDragging) return;
   isDragging = false;
 
+  if (!hasMoved) return; // ignore small vertical scrolls
+
   const endX = e.changedTouches[0].clientX;
-  const endY = e.changedTouches[0].clientY;
-
   const diffX = endX - startX;
-  const diffY = endY - startY;
+  const threshold = 50;
 
-  const threshold = 50; // Minimum swipe distance
-
-  // Only trigger carousel if horizontal swipe is dominant
-  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
+  if (Math.abs(diffX) > threshold) {
     if (diffX > 0) prev();
     else next();
   }
-}
+});
 
 //=======================================================================================
 
