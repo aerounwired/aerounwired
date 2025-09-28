@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// ========== TEAM CARDS ==========
+
 // ========== TEAM CARDS ==========
 // Fetch and render team dynamically
 fetch('team_details.json')
