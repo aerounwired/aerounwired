@@ -378,10 +378,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 const sponsors = [
-  { name: "Google", logo: "images/gmail_logo.png" },
-  { name: "Microsoft", logo: "images/gmail_logo.png" },
-  { name: "Amazon", logo: "images/gmail_logo.png" },
-  { name: "OpenAI", logo: "images/gmail_logo.png" }
+  { name: "Google", logo: "images/ansys.png" },
+  { name: "Microsoft", logo: "images/quadkart.png" },
+  { name: "Amazon", logo: "images/image 2.png" },
+  { name: "OpenAI", logo: "images/image 5.png" },
+  { name: "OpenAI", logo: "images/image 7.png" },
+  { name: "OpenAI", logo: "images/image 8.png" }
 ];
 
 const track = document.getElementById("sponsorsTrack");
