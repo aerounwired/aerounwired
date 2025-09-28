@@ -239,3 +239,53 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 //=======================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================================
+
+
+
+
+// Example sponsor details
+const sponsors = [
+  { name: "Google", logo: "images/google.png" },
+  { name: "Microsoft", logo: "images/microsoft.png" },
+  { name: "Amazon", logo: "images/amazon.png" },
+  { name: "OpenAI", logo: "images/openai.png" }
+];
+
+const sponsorsTrack = document.getElementById("sponsorsTrack");
+
+// Add sponsors dynamically
+sponsors.forEach(sponsor => {
+  const sponsorDiv = document.createElement("div");
+  sponsorDiv.classList.add("sponsor");
+  sponsorDiv.innerHTML = `<img src="${sponsor.logo}" alt="${sponsor.name}" title="${sponsor.name}">`;
+  sponsorsTrack.appendChild(sponsorDiv);
+});
+
+// Duplicate track content to make smooth infinite scroll
+sponsors.forEach(sponsor => {
+  const sponsorDiv = document.createElement("div");
+  sponsorDiv.classList.add("sponsor");
+  sponsorDiv.innerHTML = `<img src="${sponsor.logo}" alt="${sponsor.name}" title="${sponsor.name}">`;
+  sponsorsTrack.appendChild(sponsorDiv);
+});

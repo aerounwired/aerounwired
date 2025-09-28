@@ -56,8 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return {
       isMobile,
       visibleCount: isMobile ? 3 : 5,
-      gap: 45,
-      maxScale: isMobile ? 1.6 : 1.3
+      gap: isMobile ? 45: 75,
+      maxScale: isMobile ? 1.6 : 1.6
     };
   }
 
@@ -103,17 +103,26 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    positions.forEach((offset) => {
-      const cardIndex = (index + offset + total) % total;
-      const card = cards[cardIndex];
+   positions.forEach((offset) => {
+  const cardIndex = (index + offset + total) % total;
+  const card = cards[cardIndex];
 
-      let shiftX = offset * step;
-      let scale = offset === 0 ? config.maxScale : 1.0;
+  let scale = offset === 0 ? config.maxScale : 1.0;
 
-      card.style.opacity = "1";
-      card.style.zIndex = String(5 - Math.abs(offset));
-      card.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
-    });
+  // Add extra spacing near the active card
+  let extraGap = 0;
+  if (Math.abs(offset) === 1) {
+    extraGap = config.gap * 0.5; // tweak multiplier (0.3–0.7) until it looks good
+    extraGap *= offset; // left vs right direction
+  }
+
+  let shiftX = (offset * step) + extraGap;
+
+  card.style.opacity = "1";
+  card.style.zIndex = String(5 - Math.abs(offset));
+  card.style.transform = `translate(calc(-50% + ${shiftX}px), -50%) scale(${scale})`;
+});
+
 
     const activeIndices =
       direction !== 0

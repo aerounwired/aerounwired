@@ -137,7 +137,7 @@ nav {
 .event-card {
   flex: 0 0 20vw;
   height: 28vw;
-  border-radius: 30px;
+  border-radius: 2vw;
   background-color: rgba(0, 38, 255, 0.2);
   border: 2px solid #0ff;
   box-shadow: 0 0 2px #000dff, 0 0 5px #000dff, 0 0 10px #000dff,
@@ -320,11 +320,19 @@ nav {
 
 .event-card {
   position: absolute;
-  width: 300px;
-  height: 450px;
-  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 250px;
+  height: 350px;
+  border-radius: 30px;
+  background-color: rgba(0, 38, 255, 0.2);
+  border: 2px solid #0ff;
+  box-shadow: 
+    0 0 2px #000DFF,
+    0 0 5px #000DFF,
+    0 0 10px #000DFF,
+    0 0 20px #000DFF;
+  transition: transform 0.3s ease;
+
 }
 .event-card img {
   width: 100%;
@@ -467,13 +475,17 @@ nav {
     height: 100%;
   }
 
-  .event-card {
+   .event-card {
     position: absolute;
     width: 100px;
     height: 150px;
-    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 4vw;
+  background-color: rgba(0, 38, 255, 0.2);
+  border: 2px solid #0ff;
+  box-shadow: 0 0 2px #000dff, 0 0 5px #000dff, 0 0 10px #000dff,
+    0 0 20px #000dff;
+  transition: transform 0.3s ease;
   }
   .event-card.active {
     transform: scale(1.5);

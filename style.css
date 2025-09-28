@@ -443,6 +443,69 @@ section {
 
 /*===========================================================*/
 
+
+
+/* =================SPONSORS======================== */
+.sponsors-wrapper h1{
+  color: #0c8ce9;
+  font-size: 2.5rem;
+}
+.sponsors-wrapper {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.sponsors-wrapper h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.sponsors-container {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  padding: 10px 0;
+  white-space: nowrap;
+}
+
+.sponsors-track {
+  display: inline-block;
+  animation: scroll-left 20s linear infinite;
+}
+
+.sponsor {
+  display: inline-block;
+  margin: 0 20px;
+  vertical-align: middle;
+}
+
+.sponsor img {
+  height: 50px;
+  object-fit: contain;
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+
+
+
+
+
+
+/* ========================================= */
+
+
+
+
 /* =========================Mobile/Tablet============== */
 @media (max-width: 748px) {
   .logo {
@@ -638,10 +701,16 @@ section {
     position: absolute;
     width: 100px;
     height: 150px;
-    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 4vw;
+  background-color: rgba(0, 38, 255, 0.2);
+  border: 2px solid #0ff;
+  box-shadow: 0 0 2px #000dff, 0 0 5px #000dff, 0 0 10px #000dff,
+    0 0 20px #000dff;
+  transition: transform 0.3s ease;
   }
+
+
   .event-card.active {
     transform: scale(1.5);
   }
