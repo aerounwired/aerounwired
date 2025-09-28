@@ -43,7 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // =======================MAIN=======================================
-// =======================MAIN=======================================
+
+
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const eventData = [
     { name: "Computational Fluid Dynamics", image: "competitions/fluid_dynamics.png" },
@@ -102,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       isMobile,
       visibleCount: isMobile ? 3 : 5,
       gap: isMobile ? 45 : 75,
-      maxScale: 1.6
+      maxScale: isMobile ? 1.6 : 1.6
     };
   }
 
@@ -233,64 +240,121 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial render
   render();
 
-  window.addEventListener("load", render);
+  // Ensure everything recalculates properly after all assets load
+  window.addEventListener("load", () => {
+    render();
+  });
+
+  // Also re-render on resize
   window.addEventListener("resize", () => {
     direction = 0;
     render();
   });
+
+  // =======================SWIPE SUPPORT=======================================
+  let startX = 0;
+  let startY = 0;
+  let isDragging = false;
+  let movedX = 0;
+  let movedY = 0;
+
+  // Ensure track exists before binding events
+  if (!track) {
+    console.error("Carousel track element not found. Ensure #cards-track exists in the DOM.");
+    return;
+  }
+
+  function bindTouchEvents() {
+    // Remove existing listeners to prevent duplicates
+    track.removeEventListener("touchstart", dragStart);
+    track.removeEventListener("touchmove", dragMove);
+    track.removeEventListener("touchend", dragEnd);
+    track.removeEventListener("mousedown", dragStart);
+    track.removeEventListener("mousemove", dragMove);
+    track.removeEventListener("mouseup", dragEnd);
+    track.removeEventListener("mouseleave", dragEnd);
+
+    // Add touch and mouse event listeners
+    track.addEventListener("touchstart", dragStart, { passive: true });
+    track.addEventListener("touchmove", dragMove, { passive: false });
+    track.addEventListener("touchend", dragEnd, { passive: true });
+    track.addEventListener("mousedown", dragStart, { passive: true });
+    track.addEventListener("mousemove", dragMove, { passive: false });
+    track.addEventListener("mouseup", dragEnd, { passive: true });
+    track.addEventListener("mouseleave", dragEnd, { passive: true });
+  }
+
+  function dragStart(e) {
+    if (!track.contains(e.target)) return; // Ignore events outside track
+    isDragging = true;
+    startX = e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
+    startY = e.type === "touchstart" ? e.touches[0].clientY : e.clientY;
+    movedX = 0;
+    movedY = 0;
+    console.debug("Drag start:", startX, startY); // Debug log
+  }
+
+  function dragMove(e) {
+    if (!isDragging) return;
+
+    movedX = (e.type === "touchmove" ? e.touches[0].clientX : e.clientX) - startX;
+    movedY = (e.type === "touchmove" ? e.touches[0].clientY : e.clientY) - startY;
+
+    // If horizontal movement is dominant, prevent default scrolling
+    if (Math.abs(movedX) > Math.abs(movedY) && Math.abs(movedX) > 10) {
+      e.preventDefault();
+      console.debug("Horizontal swipe detected:", movedX, movedY); // Debug log
+    }
+  }
+
+  function dragEnd(e) {
+    if (!isDragging) return;
+    isDragging = false;
+
+    const endX = e.type === "touchend" ? e.changedTouches[0].clientX : e.clientX;
+    const endY = e.type === "touchend" ? e.changedTouches[0].clientY : e.clientY;
+    const diffX = endX - startX;
+    const diffY = endY - startY;
+    const threshold = 50; // Minimum swipe distance
+
+    console.debug("Drag end:", diffX, diffY); // Debug log
+
+    // Trigger carousel navigation only if horizontal swipe is dominant
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
+      if (diffX > 0) {
+        console.debug("Swipe right -> prev");
+        prev();
+      } else {
+        console.debug("Swipe left -> next");
+        next();
+      }
+    }
+  }
+
+  // Bind events initially
+  bindTouchEvents();
+
+  // Rebind events on resize to handle layout changes
+  window.addEventListener("resize", bindTouchEvents);
 });
 
-// =======================SWIPE SUPPORT=======================================
-let startX = 0;
-let startY = 0;
-let isDragging = false;
-let movedX = 0;
-let movedY = 0;
 
-track.addEventListener("touchstart", dragStart, { passive: true });
-track.addEventListener("touchmove", dragMove, { passive: false });
-track.addEventListener("touchend", dragEnd);
 
-function dragStart(e) {
-  isDragging = true;
-  startX = e.touches[0].clientX;
-  startY = e.touches[0].clientY;
-  movedX = 0;
-  movedY = 0;
-}
 
-function dragMove(e) {
-  if (!isDragging) return;
 
-  movedX = e.touches[0].clientX - startX;
-  movedY = e.touches[0].clientY - startY;
 
-  // If horizontal movement is dominant, prevent default vertical scrolling
-  if (Math.abs(movedX) > Math.abs(movedY)) {
-    e.preventDefault();
-  }
-}
 
-function dragEnd(e) {
-  if (!isDragging) return;
-  isDragging = false;
 
-  const endX = e.changedTouches[0].clientX;
-  const endY = e.changedTouches[0].clientY;
 
-  const diffX = endX - startX;
-  const diffY = endY - startY;
 
-  const threshold = 50; // Minimum swipe distance
 
-  // Only trigger carousel if horizontal swipe is dominant
-  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
-    if (diffX > 0) prev();
-    else next();
-  }
-}
 
-//=======================================================================================
+
+
+
+
+
+
 //=======================================================================================
 
 
