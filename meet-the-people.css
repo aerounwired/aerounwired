@@ -407,6 +407,13 @@ nav {
   margin-bottom: 0px;
   margin-top: 3rem;
 }
+
+.card-name {
+  font-size: .8rem;
+}
+.card-position {
+  font-size: 0.7rem;
+}
 }
 
 /*=====================================================*/
