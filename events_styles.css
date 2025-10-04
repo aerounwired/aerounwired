@@ -6,7 +6,6 @@
   box-sizing: border-box;
 }
 
-
 body,
 html {
   font-family: "Lexend", sans-serif;
@@ -72,11 +71,7 @@ nav {
 
 /*=====================================*/
 
-
-
-
 /* =================MAIN================= */
-
 
 /* main-banner */
 .event-item {
@@ -88,20 +83,20 @@ nav {
   margin: 5vh auto;
   width: 50vw;
   height: auto;
-  background: white; 
+  background: white;
   border: 0.2vw solid #0ff;
   box-shadow: 0 0 0.5vw #00aaff, 0 0 1.5vw #00aaff, 0 0 2.5vw #00aaff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden; 
+  overflow: hidden;
   position: relative;
-  z-index: 1; 
+  z-index: 1;
   margin-top: 10vw;
 }
 
 .event-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   border-radius: 1.5vw;
   display: block;
 }
@@ -209,7 +204,6 @@ nav {
   background: transparent;
 }
 
-
 .event-static-image {
   max-width: 100%;
   height: auto;
@@ -226,9 +220,9 @@ nav {
 #carousel-prev,
 #carousel-next {
   position: absolute;
-  top: 50%; 
+  top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5); 
+  background: rgba(0, 0, 0, 0.5);
   border: none;
   border-radius: 50%;
   padding: 8px;
@@ -250,35 +244,32 @@ nav {
 }
 
 #carousel-prev {
-  left: -50px; 
+  left: -50px;
 }
 
 #carousel-next {
-  right: -50px; 
+  right: -50px;
 }
-
 
 .slider-container {
   position: relative;
   width: 80%;
   margin: 0 auto;
-  padding-bottom: 50px; 
+  padding-bottom: 50px;
 }
 
 #carousel-dots {
   display: flex;
   justify-content: center;
   gap: 10px;
-  position: absolute;     
-  bottom: 0;            
+  position: absolute;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
   margin-top: 1vw;
   margin-bottom: 3vw;
 }
-
-
 
 #carousel-dots .dot {
   width: 12px;
@@ -290,7 +281,7 @@ nav {
 }
 
 #carousel-dots .dot.active {
-  background: #0c8ce9; 
+  background: #0c8ce9;
 }
 
 .event-card {
@@ -302,8 +293,6 @@ nav {
   box-shadow: 0 0 20px #0c8ce9, 0 0 40px #0c8ce9;
   z-index: 2;
 }
-
-
 
 #cards-viewport {
   position: relative;
@@ -326,13 +315,9 @@ nav {
   border-radius: 30px;
   background-color: rgba(0, 38, 255, 0.2);
   border: 2px solid #0ff;
-  box-shadow: 
-    0 0 2px #000DFF,
-    0 0 5px #000DFF,
-    0 0 10px #000DFF,
-    0 0 20px #000DFF;
+  box-shadow: 0 0 2px #000dff, 0 0 5px #000dff, 0 0 10px #000dff,
+    0 0 20px #000dff;
   transition: transform 0.3s ease;
-
 }
 .event-card img {
   width: 100%;
@@ -340,19 +325,7 @@ nav {
   object-fit: cover;
 }
 
-
-
 /*=====================================================*/
-
-
-
-
-
-
-
-
-
-
 
 /* =========================Mobile/Tablet============== */
 @media (max-width: 748px) {
@@ -366,11 +339,6 @@ nav {
   #nav-center {
     display: none !important;
   }
-
-
-
-
-
 
   /* ====================Hamburger and Sidebar====================*/
 
@@ -455,7 +423,7 @@ nav {
     width: 60vw;
   }
 
-  #events h1{
+  #events h1 {
     font-size: 2rem;
     padding-bottom: 1rem;
   }
@@ -468,24 +436,23 @@ nav {
     padding: 0px;
   }
 
-
   #cards-track {
     position: relative;
     width: 100%;
     height: 100%;
   }
 
-   .event-card {
+  .event-card {
     position: absolute;
     width: 100px;
     height: 150px;
     overflow: hidden;
     border-radius: 4vw;
-  background-color: rgba(0, 38, 255, 0.2);
-  border: 2px solid #0ff;
-  box-shadow: 0 0 2px #000dff, 0 0 5px #000dff, 0 0 10px #000dff,
-    0 0 20px #000dff;
-  transition: transform 0.3s ease;
+    background-color: rgba(0, 38, 255, 0.2);
+    border: 2px solid #0ff;
+    box-shadow: 0 0 2px #000dff, 0 0 5px #000dff, 0 0 10px #000dff,
+      0 0 20px #000dff;
+    transition: transform 0.3s ease;
   }
   .event-card.active {
     transform: scale(1.5);
@@ -510,26 +477,22 @@ nav {
     margin-bottom: 85vw;
     margin-top: 0px;
   }
-  #carousel-dots{
+  #carousel-dots {
     top: 19rem;
-    
   }
-.slider-container {
-  position: relative;
-  width: 82%;
-  margin: 0 auto;
-  padding-bottom: 5px;
-}
-
-  /*========================================================================*/
-
-
-
+  .slider-container {
+    position: relative;
+    width: 82%;
+    margin: 0 auto;
+    padding-bottom: 5px;
+  }
 
   
+.eventimage {
+    border-radius: 1.5vw !important;
+  }
 
-
-
+  /*========================================================================*/
 
   /* ================= FOOTER -mobile================= */
 
@@ -643,30 +606,29 @@ nav {
 
   /*===========================================*/
 
+  .footer-social ul {
+    list-style: none; /* Hides the default bullets/dots */
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    margin-top: 1rem;
+  }
 
-    .footer-social ul {
-  list-style: none; /* Hides the default bullets/dots */
-  padding: 0;
-  display: flex;
-  gap: 20px;
-  margin-top: 1rem;
-}
+  li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+  }
 
-li a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: white;
-  text-decoration: none;
-}
+  li a:hover {
+    opacity: 0.8;
+  }
 
-li a:hover {
-  opacity: 0.8;
-}
-
-svg {
-  flex-shrink: 0;
-}
+  svg {
+    flex-shrink: 0;
+  }
 }
 
 /*=====================================*/
