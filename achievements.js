@@ -1,11 +1,11 @@
 let achievedata = [
-  {name: "NITK", about: "<b>AIR-5th </b>in Wright Flight competition conducted by NITK", year: "2025", image: "gallery/NITK.jpg"},
-  {name: "ADDC", about: "Unique Technology Award <b>2nd position</b> Overall - AIR 26th", year: "2025", image: "gallery/ADDC_25.jpg"},
-  {name: "DDC", about: "CFD <b>rank-8th</b> position Overall AIR-15th", year: "2025", image: "gallery/DDC_25.jpg"},
-  {name: "ADDC", about: "<b>AIR-1</b> in best design report", year: "2023", image: "gallery/ADDC_23.jpg"},
-  {name: "ADC", about: "Earned <b>Top Honors</b> at Boeing-IIT National Aeromodelling Competition", year: "2019", image: "gallery/ADC_2019.jpg"},
-  {name: "ADC", about: "Awarded <b>2nd position</b> for Best Presentation Overall AIR-4th in Aero Design challenge", year: "2017", image: "gallery/Aero_design.jpg"},
-  {name: "ADC", about: "Awarded <b>AIR-1st</b> in Best Presentation, <b>1st</b> in Best Flight, <b>3rd</b> in Best Design Report Overall <b>AIR-1</b>", year: "2016", image: "gallery/ADC_2016.jpg"}
+  {name: "NITK", about: "<b><b>AIR-5th </b></b>in Wright Flight competition conducted by NITK", year: "2025", image: "gallery/NITK.jpg"},
+  {name: "ADDC", about: "Unique Technology Award <b><b>2nd position</b></b> Overall - <b><b>AIR 26th</b></b>", year: "2025", image: "gallery/ADDC_25.jpg"},
+  {name: "DDC", about: "CFD <b>Rank-8th</b> position Overall AIR-15th", year: "2025", image: "gallery/DDC_25.jpg"},
+  {name: "ADDC", about: "<b><b>AIR-1</b></b> in Best Design Report", year: "2023", image: "gallery/ADDC_23.jpg"},
+  {name: "ADC", about: "Earned <b><b>Top Honors</b></b> at Boeing-IIT National Aeromodelling Competition", year: "2019", image: "gallery/ADC_2019.jpg"},
+  {name: "ADC", about: "Awarded <b><b>2nd position</b></b> for Best Presentation Overall AIR-4th in Aero Design challenge", year: "2017", image: "gallery/Aero_design.jpg"},
+  {name: "ADC", about: "Awarded <b><b>AIR-1st</b></b> in Best Presentation, <b><b>1st</b></b> in Best Flight, <b><b>3rd</b></b> in Best Design Report Overall <b><b>AIR-1</b></b>", year: "2016", image: "gallery/ADC_2016.jpg"}
 ];
 
 let achievehtml = achievedata.map((data, index) => {
