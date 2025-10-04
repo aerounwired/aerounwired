@@ -4,8 +4,8 @@ let achievedata = [
   {name: "DDC", about: "CFD rank-8th position Overall AIR-15th", year: "2025", image: "gallery/DDC_25.jpg"},
   {name: "ADDC", about: "AIR-1 in best design report", year: "2023", image: "gallery/ADDC_23.jpg"},
   {name: "ADC", about: "Earned Top Honors at Boeing-IIT National Aeromodelling Competition", year: "2019", image: "gallery/ADC_2019.jpg"},
-  {name: "AERO DESIGN", about: "Awarded 2nd position for Best Presentation Overall AIR-4th in Aero Design challenge", year: "2017", image: "gallery/Aero_design.jpg"},
-  {name: "ADDC", about: "AIR-1 in best design report", year: "2023", image: "gallery/ADDC_23.jpg"}
+  {name: "ADC", about: "Awarded 2nd position for Best Presentation Overall AIR-4th in Aero Design challenge", year: "2017", image: "gallery/Aero_design.jpg"},
+  {name: "ADC", about: "Awarded AIR-1st in Best Presentation, 1st in Best Flight, 3rd in Best Design Report Overall AIR-1", year: "2016", image: "gallery/ADC_2016.jpg"}
 ];
 
 let achievehtml = achievedata.map((data, index) => {
