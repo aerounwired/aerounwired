@@ -443,18 +443,17 @@ section {
 
 /*===========================================================*/
 
-
-
-/* =================SPONSORS======================== */
 .sponsors-wrapper {
   text-align: center;
   margin: 40px 0;
+  padding: 0;
 }
 
 .sponsors-wrapper h1 {
   color: #0c8ce9;
   font-size: 2.5rem;
   margin-bottom: 5vw;
+  font-weight: 700;
 }
 
 .sponsors-container {
@@ -465,9 +464,10 @@ section {
 }
 
 .sponsors-track {
+  --animation-duration: 20s; /* Fallback duration */
   display: flex;
   flex-wrap: nowrap;
-  animation: scroll-left linear infinite;
+  animation: scroll-left var(--animation-duration) linear infinite;
   will-change: transform;
 }
 
@@ -475,17 +475,28 @@ section {
   flex: 0 0 auto;
   margin: 0 20px;
   width: 140px;
+  height: 100px;
+  flex-shrink: 0;
 }
 
 .sponsor img {
   width: 100%;
-  height: 100px;
+  height: 100%;
   object-fit: contain;
   display: block;
 }
 
 .sponsors-container:hover .sponsors-track {
   animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 @media (max-width: 600px) {
@@ -495,18 +506,19 @@ section {
 
   .sponsor {
     width: 80px;
+    height: 50px;
     margin: 0 10px;
   }
 
   .sponsor img {
-    height: 50px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sponsors-track {
+    --animation-duration: 15s; /* Fallback for mobile */
   }
 }
-
-/* ========================================= */
-
-
-
 
 /* =========================Mobile/Tablet============== */
 @media (max-width: 748px) {
@@ -867,6 +879,33 @@ section {
   }
 
   /*===========================================*/
+
+
+
+
+  .footer-social ul {
+  list-style: none; /* Hides the default bullets/dots */
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  margin-top: 1rem;
+}
+
+li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+}
+
+li a:hover {
+  opacity: 0.8;
+}
+
+svg {
+  flex-shrink: 0;
+}
 }
 
 /*=====================================*/
@@ -996,3 +1035,22 @@ section {
   /*===========================================*/
 }
 /*=====================================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
