@@ -1,11 +1,11 @@
 let achievedata = [
-  {name: "NITK", about: "AIR-5th in Wright Flight competition conducted by NITK", year: "2025", image: "gallery/NITK.jpg"},
-  {name: "ADDC", about: "Unique Technology Award 2nd position Overall - AIR 26th", year: "2025", image: "gallery/ADDC_25.jpg"},
-  {name: "DDC", about: "CFD rank-8th position Overall AIR-15th", year: "2025", image: "gallery/DDC_25.jpg"},
-  {name: "ADDC", about: "AIR-1 in best design report", year: "2023", image: "gallery/ADDC_23.jpg"},
-  {name: "ADC", about: "Earned Top Honors at Boeing-IIT National Aeromodelling Competition", year: "2019", image: "gallery/ADC_2019.jpg"},
-  {name: "ADC", about: "Awarded 2nd position for Best Presentation Overall AIR-4th in Aero Design challenge", year: "2017", image: "gallery/Aero_design.jpg"},
-  {name: "ADC", about: "Awarded AIR-1st in Best Presentation, 1st in Best Flight, 3rd in Best Design Report Overall AIR-1", year: "2016", image: "gallery/ADC_2016.jpg"}
+  {name: "NITK", about: "<b>AIR-5th </b>in Wright Flight competition conducted by NITK", year: "2025", image: "gallery/NITK.jpg"},
+  {name: "ADDC", about: "Unique Technology Award <b>2nd position</b> Overall - AIR 26th", year: "2025", image: "gallery/ADDC_25.jpg"},
+  {name: "DDC", about: "CFD <b>rank-8th</b> position Overall AIR-15th", year: "2025", image: "gallery/DDC_25.jpg"},
+  {name: "ADDC", about: "<b>AIR-1</b> in best design report", year: "2023", image: "gallery/ADDC_23.jpg"},
+  {name: "ADC", about: "Earned <b>Top Honors</b> at Boeing-IIT National Aeromodelling Competition", year: "2019", image: "gallery/ADC_2019.jpg"},
+  {name: "ADC", about: "Awarded <b>2nd position</b> for Best Presentation Overall AIR-4th in Aero Design challenge", year: "2017", image: "gallery/Aero_design.jpg"},
+  {name: "ADC", about: "Awarded <b>AIR-1st</b> in Best Presentation, <b>1st</b> in Best Flight, <b>3rd</b> in Best Design Report Overall <b>AIR-1</b>", year: "2016", image: "gallery/ADC_2016.jpg"}
 ];
 
 let achievehtml = achievedata.map((data, index) => {

@@ -188,6 +188,7 @@ p {
     left: 10%;
     top: 60%;
   }
+ 
   .text-box.text-box-right {
     position: absolute;
     width: 154px;
@@ -195,6 +196,11 @@ p {
     font-weight: bold;
     left: 10%;
     top: 60%;
+  }
+   .text-box p{
+    position: relative;
+    top: -5vw;
+    font-weight: normal;
   }
   .box {
     background-color: aliceblue;
