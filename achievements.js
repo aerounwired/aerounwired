@@ -1,10 +1,10 @@
 let achievedata = [
   {name: "NITK", about: "<b><b>AIR-5th </b></b>in Wright Flight competition conducted by NITK", year: "2025", image: "gallery/NITK.jpg"},
   {name: "ADDC", about: "Unique Technology Award <b><b>2nd position</b></b> Overall - <b><b>AIR 26th</b></b>", year: "2025", image: "gallery/ADDC_25.jpg"},
-  {name: "DDC", about: "CFD <b>Rank-8th</b> position Overall AIR-15th", year: "2025", image: "gallery/DDC_25.jpg"},
+  {name: "DDC", about: "CFD <b>Rank-8th</b> position Overall <b><b>AIR-15th</b></b>", year: "2025", image: "gallery/DDC_25.jpg"},
   {name: "ADDC", about: "<b><b>AIR-1</b></b> in Best Design Report", year: "2023", image: "gallery/ADDC_23.jpg"},
   {name: "ADC", about: "Earned <b><b>Top Honors</b></b> at Boeing-IIT National Aeromodelling Competition", year: "2019", image: "gallery/ADC_2019.jpg"},
-  {name: "ADC", about: "Awarded <b><b>2nd position</b></b> for Best Presentation Overall AIR-4th in Aero Design challenge", year: "2017", image: "gallery/Aero_design.jpg"},
+  {name: "ADC", about: "Awarded <b><b>2nd position</b></b> for Best Presentation Overall <b><b>AIR-4th </b></b>in Aero Design challenge", year: "2017", image: "gallery/Aero_design.jpg"},
   {name: "ADC", about: "Awarded <b><b>AIR-1st</b></b> in Best Presentation, <b><b>1st</b></b> in Best Flight, <b><b>3rd</b></b> in Best Design Report Overall <b><b>AIR-1</b></b>", year: "2016", image: "gallery/ADC_2016.jpg"}
 ];
 
