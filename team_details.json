@@ -1,16 +1,22 @@
 [
   {"name": "PAUL VARGHESE SHIBU", "photo": "team_photos/paul.jpg", "position": "SECRETARY", "batch": "B23"},
-  {"name": "SINAN", "photo": "team_photos/alice_smith.png", "position": "SAE CAPTAIN", "batch": "B23"},
+  {"name": "SINAN", "photo": "team_photos/SINAN.jpg", "position": "SAE CAPTAIN", "batch": "B23"},
   {"name": "AKASHDEEP", "photo": "team_photos/", "position": "DEPUTY SECRETARY", "batch": "B23"},
   {"name": "AADITYA", "photo": "team_photos/aditya.jpg", "position": "FABRICATION HEAD", "batch": "B23"},
   {"name": "ANGEL", "photo": "team_photos/ANGEL.jpg", "position": "DESIGN AND CONTENT HEAD", "batch": "B23"},
   {"name": "VIVANSH", "photo": "team_photos/VIVANSH.jpeg", "position": "MARKETING HEAD", "batch": "B23"},
   {"name": "AARUSH", "photo": "team_photos/alice_smith.png", "position": "MARKETING HEAD", "batch": "B23"},
   {"name": "ABINASH", "photo": "team_photos/Abinash.jpg", "position": "TREASURER", "batch": "B23"},
-  {"name": "AKAANSH", "photo": "team_photos/alice_smith.png", "position": "TREASURER", "batch": "B23"},
-  {"name": "MAAHIRA", "photo": "team_photos/Maahira.HEIC", "position": "MEDIA AND PR HEAD", "batch": "B23"},
-  {"name": "VEENA", "photo": "team_photos/veena.jpg", "position": "Member", "batch": "B23"},
-  {"name": "AKMAL", "photo": "team_photos/akmal.jpg", "position": "Member", "batch": "B23"}
+  {"name": "AKAANSH", "photo": "team_photos/AAKANSH.jpg", "position": "TREASURER", "batch": "B23"},
+  {"name": "MAAHIRA", "photo": "team_photos/MAAHIRA.png", "position": "MEDIA AND PR HEAD", "batch": "B23"},
+  {"name": "VEENA", "photo": "team_photos/veena.jpg", "position": "SENIOR EXECUTIVE", "batch": "B23"},
+  {"name": "JEFIN", "photo": "team_photos/JEFFIN.jpg", "position": "SENIOR EXECUTIVE", "batch": "B23"},
+  {"name": "SRINIVAS", "photo": "team_photos/SRINIVAS.jpg", "position": "SENIOR EXECUTIVE", "batch": "B23"},
+  {"name": "VARSHINII", "photo": "team_photos/VARSHINII.jpg", "position": "SENIOR EXECUTIVE", "batch": "B23"},
+  {"name": "DENNIS", "photo": "team_photos/DENNIS.jpg", "position": "SENIOR EXECUTIVE", "batch": "B23"},
+  {"name": "RABEEH", "photo": "team_photos/RABEEH.jpg", "position": "SENIOR EXECUTIVE", "batch": "B23"},
+  {"name": "ARUN", "photo": "team_photos/ARUN.jpg", "position": "SENIOR EXECUTIVE", "batch": "B23"},
+  {"name": "AKMAL", "photo": "team_photos/akmal.jpg", "position": "SENIOR EXECUTIVE", "batch": "B23"}
 
  
 ]
