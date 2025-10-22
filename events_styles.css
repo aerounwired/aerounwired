@@ -75,7 +75,6 @@ nav {
 
 /* main-banner */
 .event-item {
-  aspect-ratio: 1.5/1;
   border-radius: 1.5vw;
   display: flex;
   align-items: center;
@@ -83,7 +82,6 @@ nav {
   margin: 5vh auto;
   width: 50vw;
   height: auto;
-  background: white;
   border: 0.2vw solid #0ff;
   box-shadow: 0 0 0.5vw #00aaff, 0 0 1.5vw #00aaff, 0 0 2.5vw #00aaff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -94,7 +92,6 @@ nav {
 }
 
 .event-item img {
-  width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 1.5vw;
