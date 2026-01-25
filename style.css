@@ -19,8 +19,32 @@ html {
   z-index: 1;
   margin: 0;
   overflow-x: hidden;
+  /*animation: dimBackground 3s ease-in-out infinite alternate;*/
 }
 
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgb(0, 0, 0);
+  opacity: 0.3;
+  z-index: -1;
+  animation: pulseDark 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulseDark {
+  from { opacity: 0; }
+  to   { opacity: 0.4; }
+}
+
+@keyframes dimBackground {
+  from {
+    filter: brightness(0.8);
+  }
+  to {
+    filter: brightness(1);
+  }
+}
 /*=====================================*/
 
 /* ===================Navbar (Desktop)======================== */

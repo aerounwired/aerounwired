@@ -53,8 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const eventData = [
+    { name: "ICARUS'25", image: "images/ICARUS.jpg" },
+    { name: "Rocket Design Workshop", image: "competitions/rocketryws.jpeg" }, 
     { name: "Computational Fluid Dynamics", image: "competitions/fluid_dynamics.png" },
-    { name: "ICARUS", image: "competitions/icarus.png" },
+    { name: "ICARUS'24", image: "competitions/icarus.png" },
     { name: "ALBATROSS", image: "competitions/albatross.png" },
     { name: "Drone-Tech Workshop", image: "competitions/drone.png" },
     { name: "Aircraft-Design Workshop", image: "competitions/aircraft.png" }
@@ -107,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const isMobile = window.innerWidth < 768;
     return {
       isMobile,
-      visibleCount: isMobile ? 3 : 5,
+      visibleCount: isMobile ? 1 : 3,
       gap: isMobile ? 45 : 75,
       maxScale: isMobile ? 1.6 : 1.6
     };
@@ -378,16 +380,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 const sponsors = [
-  { name: "Google", logo: "images/ansys.png" },
-  { name: "Microsoft", logo: "images/quadkart.png" },
-  { name: "Amazon", logo: "images/image 2.png" },
-  { name: "OpenAI", logo: "images/image 5.png" },
-  { name: "OpenAI", logo: "images/image 7.png" },
-  { name: "OpenAI", logo: "images/image 8.png" }
+  { name: "Ansys", logo: "images/ansys.png" },
+  { name: "SolidWorks", logo: "images/solidworks-logo-1.png" },
+  { name: "drkstore", logo: "images/properdrk.png" },
+  { name: "gasotech", logo: "images/image 2.png" }
 ];
 
 const track = document.getElementById("sponsorsTrack");
-let speed = window.innerWidth <= 600 ? 0.5 : 1; 
+let speed = 0;
 
 let sponsorElements = [];
 

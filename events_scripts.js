@@ -5,8 +5,9 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const eventData = [
+    { name: "Rocket Design Workshop", image: "competitions/rocketryws.jpeg" },
     { name: "Computational Fluid Dynamics", image: "competitions/fluid_dynamics.png" },
-    { name: "ICARUS", image: "competitions/icarus.png" },
+    { name: "ICARUS'24", image: "competitions/icarus.png" },
     { name: "ALBATROSS", image: "competitions/albatross.png" },
     { name: "Drone-Tech Workshop", image: "competitions/drone.png" },
     { name: "Aircraft-Design Workshop", image: "competitions/aircraft.png" }
