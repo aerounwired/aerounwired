@@ -1,4 +1,5 @@
 let achievedata = [
+  {name: "SAE ADDC'26", about: "<b><b>AIR-2nd </b></b>in Payload Delivery", year: "2026", image: "gallery/25-26/addc26_teamwithprize.jpeg"},
     {name: "IIT Bombay", about: "<b><b>AIR-6th </b></b>in National Aeromodelling Competition at IIT Bombay", year: "2025", image: "gallery/iitb.jpeg"},
       {name: "IIST", about: "<b><b>AIR-3rd </b></b>in RC Plane Acrobatics Competition conducted by IIST", year: "2025", image: "gallery/iist.jpeg"},
   {name: "NITK", about: "<b><b>AIR-5th </b></b>in Wright Flight competition conducted by NITK", year: "2025", image: "gallery/NITK.jpg"},
